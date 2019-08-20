@@ -9,4 +9,15 @@
  * Etter du har skrevet funksjonen, åpne "Oppgave1Test" og kjør testene for å se at du har gjort det riktig.
  */
 
-// Skriv funksjonen her.
+// Løsningsforslag Oppgave 1:
+fun helloWorld(name: String = "world") = "Hello $name!"
+
+/**
+ * Oppgave 2
+ *
+ * Å nei! Koden nedenfor kompilerer ikke.
+ * Gjør det som skal til for at koden kompilerer og testene i "Oppgave2Test" kjører grønt.
+ */
+
+// Finn på noe her.
+
