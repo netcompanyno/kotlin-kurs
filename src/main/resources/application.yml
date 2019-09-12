@@ -10,19 +10,9 @@ spring:
       hibernate.enable_lazy_load_no_trans: true
   activemq:
     broker-url: vm://localhost
-    user: thing
+    user: character
     password: secret
 
 server:
   servlet.context-path: /api
   port: 5000
-
-jms:
-  queue:
-    thing:
-      create: thing.create
-      update: thing.update
-      created: thing.created
-      changed: thing.changed
-    message:
-      received: message.received
