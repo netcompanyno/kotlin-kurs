@@ -1,6 +1,7 @@
 package com.netcompany.java.rest;
 
-import com.netcompany.java.service.ThingService;
+import com.netcompany.java.dto.CharacterDto;
+import com.netcompany.java.service.CharacterService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,54 +16,54 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Tests {@link ThingController}
+ * Tests {@link CharacterController}
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CharacterControllerTest {
+public class CharacterEntityControllerTest {
 
     @InjectMocks
-    private ThingController thingController;
+    private CharacterController characterController;
 
     @Mock
-    private ThingService thingService;
+    private CharacterService characterService;
 
     @Test
     public void getByIdCallsServiceAndReturnsResult() {
-        final ThingDto expected = new ThingDto(0, "Soda", "Fridge");
-        when(thingService.getById(1L)).thenReturn(expected);
+        final CharacterDto expected = new CharacterDto(0, "Soda", "Fridge");
+        when(characterService.getById(1L)).thenReturn(expected);
 
-        final ThingDto result = thingController.getById(1L);
+        final CharacterDto result = characterController.getById(1L);
 
         assertNotNull(result);
         assertSame(expected, result);
 
-        verify(thingService).getById(1L);
+        verify(characterService).getById(1L);
     }
 
     @Test
-    public void getAllThingsCallsServiceAndReturnsResult() {
-        final List<ThingDto> expected = new ArrayList<>();
-        when(thingService.getAllThings()).thenReturn(expected);
+    public void getAllCharactersCallsServiceAndReturnsResult() {
+        final List<CharacterDto> expected = new ArrayList<>();
+        when(characterService.getAllCharacters()).thenReturn(expected);
 
-        final List<ThingDto> result = thingController.getAllThings();
+        final List<CharacterDto> result = characterController.getAllCharacters();
 
         assertNotNull(result);
         assertSame(expected, result);
 
-        verify(thingService).getAllThings();
+        verify(characterService).getAllCharacters();
     }
 
     @Test
     public void getByNameCallsServiceAndReturnsResults() {
-        final ThingDto expected = new ThingDto(0, "Soda", "Fridge");
+        final CharacterDto expected = new CharacterDto(0, "Soda", "Fridge");
 
-        when(thingService.getByName("something")).thenReturn(expected);
+        when(characterService.getByName("someCharacter")).thenReturn(expected);
 
-        final ThingDto result = thingController.getByName("something");
+        final CharacterDto result = characterController.getByName("someCharacter");
 
         assertNotNull(result);
         assertSame(expected, result);
 
-        verify(thingService).getByName("something");
+        verify(characterService).getByName("someCharacter");
     }
 }

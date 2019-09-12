@@ -1,8 +1,8 @@
 package com.netcompany.java.rest.integration;
 
 import com.netcompany.java.Application;
-import com.netcompany.java.database.CharacterRepository;
-import com.netcompany.java.domain.Character;
+import com.netcompany.java.repository.CharacterRepository;
+import com.netcompany.java.domain.CharacterEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class CharacterControllerMockMvcTest {
+public class CharacterEntityControllerMockMvcTest {
 
     @Autowired
     private MockMvc mvc;
@@ -33,62 +33,62 @@ public class CharacterControllerMockMvcTest {
     private CharacterRepository characterRepository;
 
     @Test
-    public void getThingByIdReturnsExistingThing() throws Exception {
-        final Character character = new Character("Soda", "Fridge");
-        characterRepository.save(character);
+    public void getCharacterByIdReturnsExistingCharacter() throws Exception {
+        final CharacterEntity characterEntity = new CharacterEntity("Soda", "Fridge");
+        characterRepository.save(characterEntity);
 
-        mvc.perform(MockMvcRequestBuilders.get("/character/{id}", character.getId())
+        mvc.perform(MockMvcRequestBuilders.get("/characterEntity/{id}", characterEntity.getId())
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
-           .andExpect(jsonPath("$.id", is(character.getId())))
+           .andExpect(jsonPath("$.id", is(characterEntity.getId())))
            .andExpect(jsonPath("$.name", is("Soda")))
            .andExpect(jsonPath("$.location", is("Fridge")));
     }
 
     @Test
-    public void getThingByReturnsNotFoundOnNonExistingThing() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/thing/{id}", 42L)
+    public void getCharacterByReturnsNotFoundOnNonExistingCharacter() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/{id}", 42L)
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isNotFound())
-           .andExpect(status().reason(containsString("Could not find thing")));
+           .andExpect(status().reason(containsString("Could not find character")));
     }
 
     @Test
-    public void getThingByNameReturnsExistingThing() throws Exception {
-        final Character character = new Character("Soda", "Fridge");
-        characterRepository.save(character);
+    public void getCharacterByNameReturnsExistingCharacter() throws Exception {
+        final CharacterEntity characterEntity = new CharacterEntity("Soda", "Fridge");
+        characterRepository.save(characterEntity);
 
-        mvc.perform(MockMvcRequestBuilders.get("/character/name/{name}", "Soda")
+        mvc.perform(MockMvcRequestBuilders.get("/characterEntity/name/{name}", "Soda")
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
-           .andExpect(jsonPath("$[0].id", is(character.getId())))
+           .andExpect(jsonPath("$[0].id", is(characterEntity.getId())))
            .andExpect(jsonPath("$[0].name", is("Soda")))
            .andExpect(jsonPath("$[0].location", is("Fridge")));
     }
 
     @Test
-    public void getThingByNameReturnsEmptyArrayOnNonExistingThing() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/thing/name/{name}", "nothing")
+    public void getCharacterByNameReturnsEmptyArrayOnNonExistingCharacter() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/name/{name}", "nocharacter")
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
            .andExpect(content().json("[]"));
     }
 
     @Test
-    public void getAllThingsReturnsEmptyArrayWhenNoThings() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/thing").accept(MediaType.APPLICATION_JSON))
+    public void getAllCharactersReturnsEmptyArrayWhenNoCharacters() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/character").accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
            .andExpect(content().json("[]"));
     }
 
     @Test
-    public void getAllThingsReturnsArrayOfThings() throws Exception {
-        final Character tv = new Character("TV", "Living room");
+    public void getAllCharactersReturnsArrayOfCharacters() throws Exception {
+        final CharacterEntity tv = new CharacterEntity("TV", "Living room");
         characterRepository.save(tv);
-        final Character computer = new Character("Computer", "Office");
+        final CharacterEntity computer = new CharacterEntity("Computer", "Office");
         characterRepository.save(computer);
 
-        mvc.perform(MockMvcRequestBuilders.get("/thing").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/character").accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
            .andExpect(jsonPath("$[0].id", is(tv.getId())))
            .andExpect(jsonPath("$[0].name", is("TV")))
