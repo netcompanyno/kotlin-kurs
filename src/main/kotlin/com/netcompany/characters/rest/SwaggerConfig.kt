@@ -1,4 +1,4 @@
-package com.netcompany.java.rest;
+package com.netcompany.characters.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

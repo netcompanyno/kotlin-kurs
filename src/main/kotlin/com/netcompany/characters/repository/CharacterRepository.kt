@@ -1,6 +1,6 @@
-package com.netcompany.java.repository;
+package com.netcompany.characters.repository;
 
-import com.netcompany.java.domain.CharacterEntity;
+import com.netcompany.characters.domain.CharacterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

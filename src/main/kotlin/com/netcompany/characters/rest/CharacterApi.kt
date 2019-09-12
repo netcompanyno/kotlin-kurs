@@ -1,6 +1,6 @@
-package com.netcompany.java.rest;
+package com.netcompany.characters.rest;
 
-import com.netcompany.java.dto.CharacterDto
+import com.netcompany.characters.dto.CharacterDto
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;

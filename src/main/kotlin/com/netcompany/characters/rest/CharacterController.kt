@@ -1,7 +1,7 @@
-package com.netcompany.java.rest;
+package com.netcompany.characters.rest;
 
-import com.netcompany.java.dto.CharacterDto
-import com.netcompany.java.service.CharacterService;
+import com.netcompany.characters.dto.CharacterDto
+import com.netcompany.characters.service.CharacterService;
 import org.springframework.web.bind.annotation.*
 
 /**

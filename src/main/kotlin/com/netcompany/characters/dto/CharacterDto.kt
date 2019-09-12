@@ -1,6 +1,6 @@
-package com.netcompany.java.dto;
+package com.netcompany.characters.dto;
 
-import com.netcompany.java.domain.CharacterEntity
+import com.netcompany.characters.domain.CharacterEntity
 
 /**
  * Data transfer object representing a character.

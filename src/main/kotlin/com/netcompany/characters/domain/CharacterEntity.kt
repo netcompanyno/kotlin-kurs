@@ -1,4 +1,4 @@
-package com.netcompany.java.domain
+package com.netcompany.characters.domain
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

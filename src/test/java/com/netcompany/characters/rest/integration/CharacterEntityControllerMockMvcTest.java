@@ -1,8 +1,8 @@
-package com.netcompany.java.rest.integration;
+package com.netcompany.characters.rest.integration;
 
-import com.netcompany.java.Application;
-import com.netcompany.java.repository.CharacterRepository;
-import com.netcompany.java.domain.CharacterEntity;
+import com.netcompany.characters.Application;
+import com.netcompany.characters.repository.CharacterRepository;
+import com.netcompany.characters.domain.CharacterEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
