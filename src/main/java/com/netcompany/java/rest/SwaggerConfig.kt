@@ -29,8 +29,8 @@ open class SwaggerConfig {
                         "https://www.netcompany.com",
                         "netcompany.no.hr@netcompany.com"
                     ))
-                    .description("API for keeping track of your things")
-                    .title("ThingAPI")
+                    .description("API for handling characters.")
+                    .title("Character API")
                     .version("1.0")
                     .build())
     }

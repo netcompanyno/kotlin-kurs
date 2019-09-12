@@ -1,10 +1,10 @@
-package com.netcompany.java.exception;
+package com.netcompany.java.exception
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * In general, you want to create unchecked exception, by extending {@link RuntimeException}.
+ * Exception thrown when a requested character can't be found.
  */
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Could not find thing")
-class ThingNotFoundException(message: String) : RuntimeException(message)
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Could not find character")
+class CharacterNotFoundException(message: String) : RuntimeException(message)

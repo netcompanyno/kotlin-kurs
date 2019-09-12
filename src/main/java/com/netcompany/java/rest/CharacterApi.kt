@@ -1,50 +1,48 @@
 package com.netcompany.java.rest;
 
+import com.netcompany.java.dto.CharacterDto
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-/**
- * Swagger-specific annotations are kept in an interface, to keep the implementation code clean.
- */
-interface ThingApi {
-
+interface CharacterApi {
     /**
-     * Get a {@link ThingDto} based on it's id.
+     * Get a character based on its id.
      *
-     * @param id id of the {@link ThingDto thing} to be retrieved
-     * @return a {@link ThingDto thing}, if one is found
+     * @param id id of the {@link CharacterDto character} to be retrieved
+     * @return a {@link CharacterDto character}, if one is found
      */
-    @ApiOperation("Get the thing with the given id")
+    @ApiOperation("Get the character with the given id")
     @ApiResponses(
-        ApiResponse(code = 200, message = "Successfully retrieved a thing"),
-        ApiResponse(code = 404, message = "Could not find a thing with the given id")
+        ApiResponse(code = 200, message = "Successfully retrieved a character"),
+        ApiResponse(code = 404, message = "Could not find a character with the given id")
     )
-    fun getById(@ApiParam(value = "The id of the thing to be retrieved", required = true, example = "42")
-                id: Long): ThingDto
+    fun getById(
+        @ApiParam(value = "The id of the character to be retrieved", required = true, example = "42") id: Long
+    ): CharacterDto
 
     /**
-     * Get all things.
+     * Get {@link CharacterDto characters} with the given name.
      *
-     * @return a list of {@link ThingDto things}
+     * @param name name of the character we want to retrieve
+     * @return a list of {@link CharacterDto characters}
      */
-
-    @ApiOperation("Get all the things!")
-    @ApiResponse(code = 200, message = "Successfully retrieved all the things")
-    fun getAllThings(): List<ThingDto>
-
-    /**
-     * Get {@link ThingDto things} with the given name.
-     *
-     * @param name name of the thing we want to retrieve
-     * @return a list of {@link ThingDto things}
-     */
-    @ApiOperation("Get things by name")
+    @ApiOperation("Get characters by name")
     @ApiResponses(
-        ApiResponse(code = 200, message = "Successfully retrieved at least one thing"),
-        ApiResponse(code = 404, message = "No things with given name found")
+        ApiResponse(code = 200, message = "Successfully retrieved at least one character"),
+        ApiResponse(code = 404, message = "No characters with given name found")
     )
-    fun getByName(@ApiParam(value = "The name of the things to retrieve", required = true, example = "something")
-                  name: String): ThingDto
+    fun getByName(
+        @ApiParam(value = "The name of the characters to retrieve", required = true, example = "R2D2") name: String
+    ): CharacterDto
+
+    /**
+     * Get all characters.
+     *
+     * @return a list of {@link CharacterDto characters}
+     */
+    @ApiOperation("Get all the characters!")
+    @ApiResponse(code = 200, message = "Successfully retrieved all the characters")
+    fun getAllCharacters(): List<CharacterDto>
 }

@@ -1,24 +1,20 @@
-package com.netcompany.java.database;
+package com.netcompany.java.repository;
 
-import com.netcompany.java.domain.Character;
+import com.netcompany.java.domain.CharacterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Repository for {@link Character}.
- *
- * By extending JpaRepository you get a lot of basic JPA methods for free. Standard methods for persisting, getting an
- * entity by, etc. It is also easy to extend with more quite basic queries, just by defining methods that follow the
- * naming conventions. In many cases, this is all you need.
+ * Repository for characters..
  */
 @Transactional
-interface CharacterRepository : JpaRepository<Character, Long> {
+interface CharacterRepository : JpaRepository<CharacterEntity, Long> {
 
     /**
-     * Finds {@link Character things} based on their name.
+     * Finds a character by name.
      *
-     * @param name the name of the {@link Character things} we want to get
-     * @return a list of {@link Character things}
+     * @param name the name of the character we want to get
+     * @return the character
      */
-    fun findByName(name: String): List<Character>
+    fun findByName(name: String): List<CharacterEntity>
 }

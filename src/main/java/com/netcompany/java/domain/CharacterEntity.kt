@@ -1,4 +1,4 @@
-package com.netcompany.java.domain;
+package com.netcompany.java.domain
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,10 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Representation of a thing.
+ * Database representation of a character.
  */
 @Entity
-class Character(var name: String, var location: String) {
+data class CharacterEntity(var name: String, var location: String) {
     // TODO denne virker nok ikke som den skal...
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
