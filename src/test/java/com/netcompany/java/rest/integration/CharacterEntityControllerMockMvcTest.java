@@ -1,8 +1,8 @@
 package com.netcompany.java.rest.integration;
 
 import com.netcompany.java.Application;
-import com.netcompany.java.database.ThingRepository;
-import com.netcompany.java.domain.Thing;
+import com.netcompany.java.database.CharacterRepository;
+import com.netcompany.java.domain.Character;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +24,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class ThingControllerMockMvcTest {
+public class CharacterControllerMockMvcTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Autowired
-    private ThingRepository thingRepository;
+    private CharacterRepository characterRepository;
 
     @Test
     public void getThingByIdReturnsExistingThing() throws Exception {
-        final Thing thing = new Thing("Soda", "Fridge");
-        thingRepository.save(thing);
+        final Character character = new Character("Soda", "Fridge");
+        characterRepository.save(character);
 
-        mvc.perform(MockMvcRequestBuilders.get("/thing/{id}", thing.getId())
+        mvc.perform(MockMvcRequestBuilders.get("/character/{id}", character.getId())
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
-           .andExpect(jsonPath("$.id", is(thing.getId())))
+           .andExpect(jsonPath("$.id", is(character.getId())))
            .andExpect(jsonPath("$.name", is("Soda")))
            .andExpect(jsonPath("$.location", is("Fridge")));
     }
@@ -55,13 +55,13 @@ public class ThingControllerMockMvcTest {
 
     @Test
     public void getThingByNameReturnsExistingThing() throws Exception {
-        final Thing thing = new Thing("Soda", "Fridge");
-        thingRepository.save(thing);
+        final Character character = new Character("Soda", "Fridge");
+        characterRepository.save(character);
 
-        mvc.perform(MockMvcRequestBuilders.get("/thing/name/{name}", "Soda")
+        mvc.perform(MockMvcRequestBuilders.get("/character/name/{name}", "Soda")
                                           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())
-           .andExpect(jsonPath("$[0].id", is(thing.getId())))
+           .andExpect(jsonPath("$[0].id", is(character.getId())))
            .andExpect(jsonPath("$[0].name", is("Soda")))
            .andExpect(jsonPath("$[0].location", is("Fridge")));
     }
@@ -83,10 +83,10 @@ public class ThingControllerMockMvcTest {
 
     @Test
     public void getAllThingsReturnsArrayOfThings() throws Exception {
-        final Thing tv = new Thing("TV", "Living room");
-        thingRepository.save(tv);
-        final Thing computer = new Thing("Computer", "Office");
-        thingRepository.save(computer);
+        final Character tv = new Character("TV", "Living room");
+        characterRepository.save(tv);
+        final Character computer = new Character("Computer", "Office");
+        characterRepository.save(computer);
 
         mvc.perform(MockMvcRequestBuilders.get("/thing").accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk())

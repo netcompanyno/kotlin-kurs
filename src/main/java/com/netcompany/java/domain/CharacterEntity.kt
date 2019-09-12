@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Representation of a thing.
  */
 @Entity
-class Thing(var name: String, var location: String) {
+class Character(var name: String, var location: String) {
     // TODO denne virker nok ikke som den skal...
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

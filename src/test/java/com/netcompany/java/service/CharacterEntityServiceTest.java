@@ -1,7 +1,7 @@
 package com.netcompany.java.service;
 
-import com.netcompany.java.database.ThingRepository;
-import com.netcompany.java.domain.Thing;
+import com.netcompany.java.database.CharacterRepository;
+import com.netcompany.java.domain.Character;
 import com.netcompany.java.exception.ThingNotFoundException;
 import com.netcompany.java.rest.ThingDto;
 import org.junit.Before;
@@ -27,13 +27,13 @@ import static org.mockito.Mockito.when;
  * Tests for {@link ThingService}.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ThingServiceTest {
+public class CharacterServiceTest {
 
     @InjectMocks
     private ThingService thingService;
 
     @Mock
-    private ThingRepository thingRepository;
+    private CharacterRepository characterRepository;
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -55,17 +55,17 @@ public class ThingServiceTest {
 
     @Test
     public void getByIdInvokesRepository() {
-        when(thingRepository.findById(1L)).thenReturn(Optional.of(new Thing()));
+        when(characterRepository.findById(1L)).thenReturn(Optional.of(new Character()));
 
         thingService.getById(1L);
 
-        verify(thingRepository).findById(1L);
+        verify(characterRepository).findById(1L);
     }
 
     @Test
     public void getByIdConvertsAndReturnsResult() {
-        final Thing thing = new Thing("Jacket", "Closet");
-        when(thingRepository.findById(1L)).thenReturn(Optional.of(thing));
+        final Character character = new Character("Jacket", "Closet");
+        when(characterRepository.findById(1L)).thenReturn(Optional.of(character));
 
         final ThingDto retrievedThing = thingService.getById(1L);
 
@@ -85,19 +85,19 @@ public class ThingServiceTest {
 
     @Test
     public void getAllThingsInvokesRepository() {
-        when(thingRepository.findAll()).thenReturn(new ArrayList<>());
+        when(characterRepository.findAll()).thenReturn(new ArrayList<>());
 
         thingService.getAllThings();
 
-        verify(thingRepository).findAll();
+        verify(characterRepository).findAll();
     }
 
     @Test
     public void getAllThingsConvertsAndReturnsResult() {
-        final List<Thing> things =
-                List.of(new Thing(1, "banana", "kitchen"), new Thing(2, "tv", "bedroom"));
+        final List<Character> characters =
+                List.of(new Character(1, "banana", "kitchen"), new Character(2, "tv", "bedroom"));
 
-        when(thingRepository.findAll()).thenReturn(things);
+        when(characterRepository.findAll()).thenReturn(characters);
 
         final List<ThingDto> thingDtos = thingService.getAllThings();
 
@@ -115,19 +115,19 @@ public class ThingServiceTest {
 
     @Test
     public void getByNameInvokesRepository() {
-        when(thingRepository.findByName("something")).thenReturn(new ArrayList<>());
+        when(characterRepository.findByName("something")).thenReturn(new ArrayList<>());
 
         thingService.getByName("something");
 
-        verify(thingRepository).findByName("something");
+        verify(characterRepository).findByName("something");
     }
 
     @Test
     public void getByNameConvertsAndReturnsResult() {
-        final List<Thing> things =
-                List.of(new Thing(1, "tv", "living room"), new Thing(2, "tv", "bedroom"));
+        final List<Character> characters =
+                List.of(new Character(1, "tv", "living room"), new Character(2, "tv", "bedroom"));
 
-        when(thingRepository.findByName("tv")).thenReturn(things);
+        when(characterRepository.findByName("tv")).thenReturn(characters);
 
         final ThingDto thingDto = thingService.getByName("tv");
 

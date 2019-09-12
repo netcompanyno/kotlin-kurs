@@ -1,6 +1,6 @@
 package com.netcompany.java.rest;
 
-import com.netcompany.java.domain.Thing
+import com.netcompany.java.domain.CharacterEntity
 
 /**
  * We provide DTOs that are separate from our domain classes. This is to separate concerns a bit, as sometimes it can
@@ -8,5 +8,5 @@ import com.netcompany.java.domain.Thing
  * subset of the fields from the entity class in the json result (in our simple example they are the same).
  */
 data class ThingDto(val id: Long, val name: String, val location: String) {
-    constructor(thing: Thing) : this(thing.id, thing.name, thing.location)
+    constructor(characterEntity: CharacterEntity) : this(characterEntity.id, characterEntity.name, characterEntity.location)
 }

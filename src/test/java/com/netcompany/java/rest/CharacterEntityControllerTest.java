@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
  * Tests {@link ThingController}
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ThingControllerTest {
+public class CharacterControllerTest {
 
     @InjectMocks
     private ThingController thingController;
