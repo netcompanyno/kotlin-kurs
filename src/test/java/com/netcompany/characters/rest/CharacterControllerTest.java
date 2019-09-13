@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
  * Tests {@link CharacterController}
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CharacterEntityControllerTest {
+public class CharacterControllerTest {
 
     @InjectMocks
     private CharacterController characterController;
@@ -29,15 +29,15 @@ public class CharacterEntityControllerTest {
 
     @Test
     public void getByIdCallsServiceAndReturnsResult() {
-        final CharacterDto expected = new CharacterDto(0, "Soda", "Fridge");
-        when(characterService.getById(1L)).thenReturn(expected);
+        final CharacterDto expected = new CharacterDto(0, "Luke Skywalker", 172);
+        when(characterService.getById(1)).thenReturn(expected);
 
-        final CharacterDto result = characterController.getById(1L);
+        final CharacterDto result = characterController.getById(1);
 
         assertNotNull(result);
         assertSame(expected, result);
 
-        verify(characterService).getById(1L);
+        verify(characterService).getById(1);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CharacterEntityControllerTest {
 
     @Test
     public void getByNameCallsServiceAndReturnsResults() {
-        final CharacterDto expected = new CharacterDto(0, "Soda", "Fridge");
+        final CharacterDto expected = new CharacterDto(0, "Yoda", 66);
 
         when(characterService.getByName("someCharacter")).thenReturn(expected);
 

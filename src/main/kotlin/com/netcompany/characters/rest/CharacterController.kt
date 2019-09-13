@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class CharacterController(private val characterService: CharacterService) : CharacterApi {
     @GetMapping(path = ["/characters/{id}"])
-    override fun getById(@PathVariable("id") id: Long): CharacterDto {
+    override fun getById(@PathVariable("id") id: Int): CharacterDto {
         return characterService.getById(id)
     }
 
@@ -20,7 +20,7 @@ class CharacterController(private val characterService: CharacterService) : Char
     }
 
     @GetMapping(path = ["/characters/name/{name}"])
-    override fun getByName(name: String): CharacterDto {
+    override fun getByName(@PathVariable name: String): CharacterDto {
         return characterService.getByName(name)
     }
 }

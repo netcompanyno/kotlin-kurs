@@ -34,67 +34,68 @@ public class CharacterEntityControllerMockMvcTest {
 
     @Test
     public void getCharacterByIdReturnsExistingCharacter() throws Exception {
-        final CharacterEntity characterEntity = new CharacterEntity("Soda", "Fridge");
+        final CharacterEntity characterEntity = new CharacterEntity(1, "Luke Skywalker", 172);
         characterRepository.save(characterEntity);
 
-        mvc.perform(MockMvcRequestBuilders.get("/characterEntity/{id}", characterEntity.getId())
-                                          .accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isOk())
-           .andExpect(jsonPath("$.id", is(characterEntity.getId())))
-           .andExpect(jsonPath("$.name", is("Soda")))
-           .andExpect(jsonPath("$.location", is("Fridge")));
+        mvc.perform(MockMvcRequestBuilders.get("/characters/{id}", characterEntity.getId())
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.id", is(characterEntity.getId())))
+            .andExpect(jsonPath("$.name", is("Luke Skywalker")))
+            .andExpect(jsonPath("$.height", is(172)));
     }
 
     @Test
-    public void getCharacterByReturnsNotFoundOnNonExistingCharacter() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/characters/{id}", 42L)
-                                          .accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isNotFound())
-           .andExpect(status().reason(containsString("Could not find character")));
+    public void getCharacterByIdReturnsNotFoundOnNonExistingCharacter() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/42")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound())
+            .andExpect(status().reason(containsString("Could not find character")));
     }
 
     @Test
     public void getCharacterByNameReturnsExistingCharacter() throws Exception {
-        final CharacterEntity characterEntity = new CharacterEntity("Soda", "Fridge");
+        final CharacterEntity characterEntity = new CharacterEntity(1, "Yoda", 66);
         characterRepository.save(characterEntity);
 
-        mvc.perform(MockMvcRequestBuilders.get("/characterEntity/name/{name}", "Soda")
-                                          .accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isOk())
-           .andExpect(jsonPath("$[0].id", is(characterEntity.getId())))
-           .andExpect(jsonPath("$[0].name", is("Soda")))
-           .andExpect(jsonPath("$[0].location", is("Fridge")));
+        mvc.perform(MockMvcRequestBuilders.get("/characters/name/Yoda")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.id", is(characterEntity.getId())))
+            .andExpect(jsonPath("$.name", is("Yoda")))
+            .andExpect(jsonPath("$.height", is(66)));
     }
 
     @Test
-    public void getCharacterByNameReturnsEmptyArrayOnNonExistingCharacter() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/characters/name/{name}", "nocharacter")
-                                          .accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isOk())
-           .andExpect(content().json("[]"));
+    public void getCharacterByNameReturnsNotFoundOnNonExistingCharacter() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/name/Yoda")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound())
+            .andExpect(status().reason(containsString("Could not find character")));
     }
 
     @Test
     public void getAllCharactersReturnsEmptyArrayWhenNoCharacters() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/character").accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isOk())
-           .andExpect(content().json("[]"));
+        mvc.perform(MockMvcRequestBuilders.get("/characters")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().json("[]"));
     }
 
     @Test
     public void getAllCharactersReturnsArrayOfCharacters() throws Exception {
-        final CharacterEntity tv = new CharacterEntity("TV", "Living room");
-        characterRepository.save(tv);
-        final CharacterEntity computer = new CharacterEntity("Computer", "Office");
-        characterRepository.save(computer);
+        final CharacterEntity luke = new CharacterEntity(1, "Luke Skywalker", 172);
+        characterRepository.save(luke);
+        final CharacterEntity yoda = new CharacterEntity(2, "Yoda", 66);
+        characterRepository.save(yoda);
 
-        mvc.perform(MockMvcRequestBuilders.get("/character").accept(MediaType.APPLICATION_JSON))
-           .andExpect(status().isOk())
-           .andExpect(jsonPath("$[0].id", is(tv.getId())))
-           .andExpect(jsonPath("$[0].name", is("TV")))
-           .andExpect(jsonPath("$[0].location", is("Living room")))
-           .andExpect(jsonPath("$[1].id", is(computer.getId())))
-           .andExpect(jsonPath("$[1].name", is("Computer")))
-           .andExpect(jsonPath("$[1].location", is("Office")));
+        mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[0].id", is(luke.getId())))
+            .andExpect(jsonPath("$[0].name", is("Luke Skywalker")))
+            .andExpect(jsonPath("$[0].height", is(172)))
+            .andExpect(jsonPath("$[1].id", is(yoda.getId())))
+            .andExpect(jsonPath("$[1].name", is("Yoda")))
+            .andExpect(jsonPath("$[1].height", is(66)));
     }
 }

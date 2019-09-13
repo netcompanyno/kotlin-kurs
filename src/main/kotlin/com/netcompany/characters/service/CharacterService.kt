@@ -22,9 +22,9 @@ open class CharacterService(private val characterRepository: CharacterRepository
      * @throws CharacterNotFoundException if no character with given id exists
      */
     @Transactional(readOnly = true)
-    open fun getById(id: Long): CharacterDto {
+    open fun getById(id: Int): CharacterDto {
         val characterEntity: CharacterEntity = characterRepository.findByIdOrNull(id)
-            ?: throw CharacterNotFoundException("CharacterEntity with id $id not found")
+            ?: throw CharacterNotFoundException("Character with id $id not found")
 
         return CharacterDto(characterEntity)
     }
@@ -40,7 +40,7 @@ open class CharacterService(private val characterRepository: CharacterRepository
     open fun getByName(name: String): CharacterDto {
         return characterRepository.findByName(name)
             .map{t -> CharacterDto(t) }
-            .firstOrNull() ?: throw CharacterNotFoundException("CharacterEntity with name $name not found")
+            .firstOrNull() ?: throw CharacterNotFoundException("Character with name $name not found")
     }
 
     /**

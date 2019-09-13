@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Repository for characters..
  */
 @Transactional
-interface CharacterRepository : JpaRepository<CharacterEntity, Long> {
+interface CharacterRepository : JpaRepository<CharacterEntity, Int> {
 
     /**
      * Finds a character by name.

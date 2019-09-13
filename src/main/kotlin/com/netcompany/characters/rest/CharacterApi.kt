@@ -19,7 +19,7 @@ interface CharacterApi {
         ApiResponse(code = 404, message = "Could not find a character with the given id")
     )
     fun getById(
-        @ApiParam(value = "The id of the character to be retrieved", required = true, example = "42") id: Long
+        @ApiParam(value = "The id of the character to be retrieved", required = true, example = "42") id: Int
     ): CharacterDto
 
     /**

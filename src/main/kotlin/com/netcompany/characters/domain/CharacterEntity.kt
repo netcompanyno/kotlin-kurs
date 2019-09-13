@@ -1,24 +1,23 @@
 package com.netcompany.characters.domain
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*
 
 /**
  * Database representation of a character.
  */
 @Entity
-data class CharacterEntity(var name: String, var location: String) {
+data class CharacterEntity(var name: String, var height: Int) {
     // TODO denne virker nok ikke som den skal...
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long = 0
+    var id: Int = 0
 
-    constructor(id: Long, name: String, location: String) : this(name, location) {
+//    @ManyToOne
+//    var homeworld: PlanetEntity? = null
+
+    constructor(id: Int, name: String, height: Int) : this(name, height) {
         this.id = id
     }
 
-    constructor() : this("", "")
-
+    constructor() : this("", 0)
 }

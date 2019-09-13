@@ -39,32 +39,32 @@ public class CharacterServiceTest {
 
     @Test
     public void getByIdInvokesRepository() {
-        when(characterRepository.findById(1L)).thenReturn(Optional.of(new CharacterEntity()));
+        when(characterRepository.findById(1)).thenReturn(Optional.of(new CharacterEntity()));
 
-        characterService.getById(1L);
+        characterService.getById(1);
 
-        verify(characterRepository).findById(1L);
+        verify(characterRepository).findById(1);
     }
 
     @Test
     public void getByIdConvertsAndReturnsResult() {
-        final CharacterEntity characterEntity = new CharacterEntity("Jacket", "Closet");
-        when(characterRepository.findById(1L)).thenReturn(Optional.of(characterEntity));
+        final CharacterEntity characterEntity = new CharacterEntity(1, "Luke Skywalker", 172);
+        when(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity));
 
-        final CharacterDto retrievedThing = characterService.getById(1L);
+        final CharacterDto retrievedThing = characterService.getById(1);
 
         assertNotNull(retrievedThing);
         assertEquals(1L, retrievedThing.getId());
-        assertEquals("Jacket", retrievedThing.getName());
-        assertEquals("Closet", retrievedThing.getLocation());
+        assertEquals("Luke Skywalker", retrievedThing.getName());
+        assertEquals(172, retrievedThing.getHeight());
     }
 
     @Test
     public void getByIdThrowsExceptionWhenElementNotFound() {
         expectedException.expect(CharacterNotFoundException.class);
-        expectedException.expectMessage("No thing with id=1");
+        expectedException.expectMessage("Character with id 1 not found");
 
-        characterService.getById(1L);
+        characterService.getById(1);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class CharacterServiceTest {
     @Test
     public void getAllThingsConvertsAndReturnsResult() {
         final List<CharacterEntity> characterEntities =
-                List.of(new CharacterEntity(1, "banana", "kitchen"), new CharacterEntity(2, "tv", "bedroom"));
+                List.of(new CharacterEntity(1, "Luke Skywalker", 172), new CharacterEntity(2, "Yoda", 66));
 
         when(characterRepository.findAll()).thenReturn(characterEntities);
 
@@ -89,36 +89,37 @@ public class CharacterServiceTest {
         assertEquals(2, characterDtos.size());
 
         assertEquals(1L, characterDtos.get(0).getId());
-        assertEquals("banana", characterDtos.get(0).getName());
-        assertEquals("kitchen", characterDtos.get(0).getLocation());
+        assertEquals("Luke Skywalker", characterDtos.get(0).getName());
+        assertEquals(172, characterDtos.get(0).getHeight());
 
         assertEquals(2L, characterDtos.get(1).getId());
-        assertEquals("tv", characterDtos.get(1).getName());
-        assertEquals("bed room", characterDtos.get(1).getLocation());
+        assertEquals("Yoda", characterDtos.get(1).getName());
+        assertEquals(66, characterDtos.get(1).getHeight());
     }
 
     @Test
     public void getByNameInvokesRepository() {
-        when(characterRepository.findByName("something")).thenReturn(new ArrayList<>());
+        final CharacterEntity characterEntity = new CharacterEntity(1, "Luke Skywalker", 172);
 
-        characterService.getByName("something");
+        when(characterRepository.findByName("Luke Skywalker")).thenReturn(List.of(characterEntity));
 
-        verify(characterRepository).findByName("something");
+        characterService.getByName("Luke Skywalker");
+
+        verify(characterRepository).findByName("Luke Skywalker");
     }
 
     @Test
     public void getByNameConvertsAndReturnsResult() {
-        final List<CharacterEntity> characterEntities =
-                List.of(new CharacterEntity(1, "tv", "living room"), new CharacterEntity(2, "tv", "bedroom"));
+        final CharacterEntity characterEntity = new CharacterEntity(1, "Luke Skywalker", 172);
 
-        when(characterRepository.findByName("tv")).thenReturn(characterEntities);
+        when(characterRepository.findByName("Luke Skywalker")).thenReturn(List.of(characterEntity));
 
-        final CharacterDto characterDto = characterService.getByName("tv");
+        final CharacterDto characterDto = characterService.getByName("Luke Skywalker");
 
         assertNotNull(characterDto);
 
         assertEquals(1L, characterDto.getId());
-        assertEquals("tv", characterDto.getName());
-        assertEquals("living room", characterDto.getLocation());
+        assertEquals("Luke Skywalker", characterDto.getName());
+        assertEquals(172, characterDto.getHeight());
     }
 }
