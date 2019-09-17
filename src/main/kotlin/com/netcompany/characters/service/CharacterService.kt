@@ -1,4 +1,4 @@
-package com.netcompany.characters.service;
+package com.netcompany.characters.service
 
 import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.dto.CharacterDto
