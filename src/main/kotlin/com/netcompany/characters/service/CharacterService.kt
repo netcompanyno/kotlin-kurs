@@ -1,12 +1,12 @@
 package com.netcompany.characters.service;
 
-import com.netcompany.characters.repository.CharacterRepository;
-import com.netcompany.characters.domain.CharacterEntity;
-import com.netcompany.characters.exception.CharacterNotFoundException;
-import com.netcompany.characters.dto.CharacterDto;
+import com.netcompany.characters.domain.CharacterEntity
+import com.netcompany.characters.dto.CharacterDto
+import com.netcompany.characters.exception.CharacterNotFoundException
+import com.netcompany.characters.repository.CharacterRepository
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * Service for functionality regarding characters.

@@ -3,9 +3,7 @@ package com.netcompany.characters.service
 import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.exception.CharacterNotFoundException
 import com.netcompany.characters.repository.CharacterRepository
-import org.junit.Rule
-import org.junit.Test
-import org.junit.rules.ExpectedException
+import org.junit.jupiter.api.assertThrows
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -13,8 +11,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import java.util.*
-import java.util.List
-import kotlin.collections.emptyList
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
@@ -29,11 +26,6 @@ class CharacterServiceTest {
 
     @Mock
     lateinit var characterRepository: CharacterRepository
-
-    @Rule
-    @JvmField
-    var expectedException = ExpectedException.none()
-
 
     @Test
     fun getByIdInvokesRepository() {
@@ -59,10 +51,9 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdThrowsExceptionWhenElementNotFound() {
-        expectedException.expect(CharacterNotFoundException::class.java)
-        expectedException.expectMessage("Character with id 1 not found")
-
-        characterService.getById(1)
+        assertThrows<CharacterNotFoundException>("Character with id 1 not found") {
+            characterService.getById(1)
+        }
     }
 
     @Test
@@ -77,7 +68,7 @@ class CharacterServiceTest {
     @Test
     fun getAllThingsConvertsAndReturnsResult() {
         val characterEntities =
-                List.of(CharacterEntity(1, "Luke Skywalker", 172), CharacterEntity(2, "Yoda", 66))
+            listOf(CharacterEntity(1, "Luke Skywalker", 172), CharacterEntity(2, "Yoda", 66))
 
         `when`(characterRepository.findAll()).thenReturn(characterEntities)
 
@@ -86,20 +77,20 @@ class CharacterServiceTest {
         assertNotNull(characterDtos)
         assertEquals(2, characterDtos.size)
 
-        assertEquals(1, characterDtos.get(0).id)
-        assertEquals("Luke Skywalker", characterDtos.get(0).name)
-        assertEquals(172, characterDtos.get(0).height)
+        assertEquals(1, characterDtos[0].id)
+        assertEquals("Luke Skywalker", characterDtos[0].name)
+        assertEquals(172, characterDtos[0].height)
 
-        assertEquals(2, characterDtos.get(1).id)
-        assertEquals("Yoda", characterDtos.get(1).name)
-        assertEquals(66, characterDtos.get(1).height)
+        assertEquals(2, characterDtos[1].id)
+        assertEquals("Yoda", characterDtos[1].name)
+        assertEquals(66, characterDtos[1].height)
     }
 
     @Test
     fun getByNameInvokesRepository() {
         val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
 
-        `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(List.of(characterEntity))
+        `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(listOf(characterEntity))
 
         characterService.getByName("Luke Skywalker")
 
@@ -110,7 +101,7 @@ class CharacterServiceTest {
     fun getByNameConvertsAndReturnsResult() {
         val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
 
-        `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(List.of(characterEntity))
+        `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(listOf(characterEntity))
 
         val characterDto = characterService.getByName("Luke Skywalker")
 

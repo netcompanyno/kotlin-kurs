@@ -74,6 +74,10 @@
             <version>${springfox-swagger.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
 
         <!-- Dependencies for test. Remember to scope to "test" -->
         <dependency>
@@ -82,9 +86,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
+            <groupId>com.nhaarman</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>1.6.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -93,29 +97,12 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit5.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <!-- This can be added once you have a real database to connect to. Currently commented out
-             so that is possible to run the built jar without errors. -->
-            <!--<scope>test</scope>-->
-        </dependency>
-
     </dependencies>
 
     <build>

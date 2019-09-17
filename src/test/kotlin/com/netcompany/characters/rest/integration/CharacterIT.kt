@@ -1,8 +1,10 @@
 package com.netcompany.characters.rest.integration
 
 import com.netcompany.characters.Application
-import com.netcompany.characters.repository.CharacterRepository
 import com.netcompany.characters.domain.CharacterEntity
+import com.netcompany.characters.repository.CharacterRepository
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.containsString
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,17 +12,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.annotation.DirtiesContext
-import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-
-import org.hamcrest.Matchers.containsString
-import org.hamcrest.Matchers.`is`
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [Application::class])
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)

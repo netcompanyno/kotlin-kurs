@@ -2,21 +2,20 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import org.junit.Test
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertSame
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
-
-import java.util.ArrayList
-
-import org.junit.Assert.*
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.Test
 
 /**
  * Tests [CharacterController]
  */
+@RunWith(MockitoJUnitRunner::class)
 class CharacterControllerTest {
 
     @InjectMocks
@@ -24,6 +23,7 @@ class CharacterControllerTest {
 
     @Mock
     lateinit var characterService: CharacterService
+
 
     @Test
     fun getByIdCallsServiceAndReturnsResult() {
