@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e3488ca-b187-4022-b134-8737a74abc74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/Oppgave2Test.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave3.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kotlin-kurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kotlin-kurs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Oppgave1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Oppgave2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave2.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="kotlin-oppgave-1" />
+        <entry key="$PROJECT_DIR$" value="kotlin-oppgave-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Oppgave1Test">
+  <component name="RunManager" selected="JUnit.Oppgave2Test">
     <configuration name="All in kotlin-kurs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kotlin-kurs" />
       <option name="PACKAGE_NAME" value="" />
@@ -90,13 +88,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Oppgave2Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kotlin-kurs" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Oppgave2Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Oppgave2Kt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="kotlin-kurs" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Oppgave2Kt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Oppgave1Test" />
+        <item itemvalue="Kotlin.Oppgave2Kt" />
+        <item itemvalue="JUnit.Oppgave2Test" />
         <item itemvalue="JUnit.Oppgave1Test.isMonth skal gi true på riktige måneder" />
+        <item itemvalue="JUnit.Oppgave1Test" />
         <item itemvalue="JUnit.All in kotlin-kurs" />
-        <item itemvalue="JUnit.Oppgave1Test.isMonth skal gi true på riktige måneder" />
-        <item itemvalue="JUnit.Oppgave1Test" />
       </list>
     </recent_temporary>
   </component>
@@ -112,7 +132,7 @@
       <updated>1565706248600</updated>
       <workItem from="1565706252313" duration="698000" />
       <workItem from="1565707036821" duration="6239000" />
-      <workItem from="1568667438413" duration="2284000" />
+      <workItem from="1568667438413" duration="3570000" />
     </task>
     <task id="LOCAL-00001" summary="Hello world!">
       <created>1565707435241</created>
@@ -128,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566334652216</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Laget oppgave 2">
+      <created>1568734505144</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568734505144</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +177,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hello world!" />
     <MESSAGE value="Laget oppgave 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Laget oppgave 1" />
+    <MESSAGE value="Laget oppgave 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Laget oppgave 2" />
   </component>
 </project>

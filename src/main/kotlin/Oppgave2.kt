@@ -5,12 +5,14 @@
  * Gjør det som skal til for at koden kompilerer, ola + kari == sant blir true, og at testene i "Oppgave2Test" kjører grønt.
  */
 
-class Person(???)
-class Couple(???)
+// Løsningsforslag oppgave 2
+
+data class Person(val name: String)
+data class Couple(val person1: Person, val person2: Person)
 
 // En operator function som heter 'plus' kan kalles med +.
 // Du kan lese mer om operator functions her: https://kotlinlang.org/docs/reference/operator-overloading.html
-operator fun ???.plus(other: ???): ??? = TODO()
+operator fun Person.plus(other: Person): Couple = Couple(this, other)
 
 fun main() {
 
