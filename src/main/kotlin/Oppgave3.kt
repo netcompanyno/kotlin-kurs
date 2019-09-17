@@ -14,10 +14,25 @@ import kotlin.random.Random
  * - Ellers, returner responsen fra callRemoteAPI.
  */
 
-fun handleRemoteCall(id: Int?): Response = TODO()
+// Løsningsforslag oppgave 3
+
+fun handleRemoteCall(id: Int?): Response {
+    if (id == null) {
+        return Response(404)
+    }
+
+    // Her har id blitt smart castet fra Int? til Int.
+    val response = callRemoteAPI(id)
+
+    return when (response?.status) {
+        500 -> throw RuntimeException("Status var 500")
+        null -> Response(404)
+        else -> response // Smart cast fra Response? til Response
+    }
+}
 
 
-// Ikke endre dette --------------
+// -------------- Ikke endre dette --------------
 data class Response(val status: Int)
 
 var ignoreThis = 0

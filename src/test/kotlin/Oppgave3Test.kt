@@ -6,8 +6,8 @@ class Oppgave3Test {
 
     @Test
     fun `Dersom id er null, returner en respons med status 404`() {
-        val respons = handleRemoteCall(null)
-        assertEquals(Response(404), respons)
+        val response = handleRemoteCall(null)
+        assertEquals(Response(404), response)
     }
 
     @Test
@@ -20,21 +20,21 @@ class Oppgave3Test {
 
     @Test
     fun `Dersom callRemoteAPI returnerer null, returner en respons med status 404`() {
-        val respons = handleRemoteCall(1)
-        assertEquals(Response(404), respons)
+        val response = handleRemoteCall(2)
+        assertEquals(Response(404), response)
     }
 
     @Test
     fun `Dersom callRemoteAPI returnerer en respons med status 500, kast en exception`() {
         assertThrows<Exception> {
-            handleRemoteCall(2)
+            handleRemoteCall(1)
         }
     }
 
     @Test
     fun `Ellers, returner responsen fra callRemoteAPI`() {
-        val respons = handleRemoteCall(3)
-        assertEquals(Response(200), respons)
+        val response = handleRemoteCall(3)
+        assertEquals(Response(200), response)
     }
 
 }
