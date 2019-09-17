@@ -13,6 +13,7 @@
         <java.version>11</java.version>
         <kotlin.version>1.3.50</kotlin.version>
 
+        <junit5.version>5.5.1</junit5.version>
         <mockito.version>2.23.4</mockito.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
     </properties>
@@ -92,6 +93,20 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>com.h2database</groupId>

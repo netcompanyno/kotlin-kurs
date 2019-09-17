@@ -17,7 +17,6 @@ import org.mockito.Mockito.`when`
 /**
  * Tests [CharacterController]
  */
-@RunWith(MockitoJUnitRunner::class)
 class CharacterControllerTest {
 
     @InjectMocks
