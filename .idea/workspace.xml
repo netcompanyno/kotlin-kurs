@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e3488ca-b187-4022-b134-8737a74abc74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave3.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/Oppgave3Test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Oppgave2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin-kurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kotlin-kurs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Oppgave3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Oppgave3.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +46,9 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin.scripting" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -60,15 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Oppgave2Test">
-    <configuration name="All in kotlin-kurs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kotlin-kurs" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.Oppgave3Test.Dersom id er null, returner en respons med status 404">
     <configuration name="Oppgave1Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="kotlin-kurs" />
       <option name="PACKAGE_NAME" value="" />
@@ -97,6 +91,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Oppgave3Test.Dersom id er null, returner en respons med status 404" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kotlin-kurs" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Oppgave3Test" />
+      <option name="METHOD_NAME" value="Dersom id er null, returner en respons med status 404" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Oppgave2Kt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="kotlin-kurs" />
       <option name="VM_PARAMETERS" />
@@ -112,11 +116,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Oppgave3Test.Dersom id er null, returner en respons med status 404" />
         <item itemvalue="Kotlin.Oppgave2Kt" />
         <item itemvalue="JUnit.Oppgave2Test" />
         <item itemvalue="JUnit.Oppgave1Test.isMonth skal gi true på riktige måneder" />
         <item itemvalue="JUnit.Oppgave1Test" />
-        <item itemvalue="JUnit.All in kotlin-kurs" />
       </list>
     </recent_temporary>
   </component>
@@ -133,6 +137,7 @@
       <workItem from="1565706252313" duration="698000" />
       <workItem from="1565707036821" duration="6239000" />
       <workItem from="1568667438413" duration="3570000" />
+      <workItem from="1568747800412" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="Hello world!">
       <created>1565707435241</created>
