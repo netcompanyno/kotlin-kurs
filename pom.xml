@@ -91,7 +91,7 @@
             <artifactId>h2</artifactId>
         </dependency>
 
-        <!-- Dependencies for test. Remember to scope to "test" -->
+        <!-- Dependencies for test. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
