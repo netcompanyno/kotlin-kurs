@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service
  * Service for functionality regarding characters.
  */
 @Service
-open class CharacterService(private val characterRepository: CharacterRepository,
-                            private val starWarsApiService: StarWarsApiService) {
+class CharacterService(private var characterRepository: CharacterRepository,
+                       private val starWarsApiService: StarWarsApiService) {
 
     /**
      * Gets the character with the given id.

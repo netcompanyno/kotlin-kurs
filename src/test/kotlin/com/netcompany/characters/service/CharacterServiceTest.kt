@@ -26,6 +26,8 @@ class CharacterServiceTest {
 
     @Mock
     lateinit var characterRepository: CharacterRepository
+    @Mock
+    lateinit var starWarsApiService: StarWarsApiService
 
     @Test
     fun getByIdInvokesRepository() {

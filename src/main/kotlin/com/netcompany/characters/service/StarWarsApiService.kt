@@ -5,7 +5,7 @@ import com.netcompany.characters.dto.CharacterDto
 import org.springframework.stereotype.Service
 
 @Service
-class StarWarsApiService(val starWarsApiClient: StarWarsApiClient) {
+class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
 
     fun getAllPeople(): List<CharacterDto> {
         val characters = starWarsApiClient.getAllPeople()
