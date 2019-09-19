@@ -37,7 +37,7 @@ open class CharacterService(private val characterRepository: CharacterRepository
      */
     fun getByName(name: String): CharacterDto {
         return characterRepository.findByName(name)
-            .map{t -> CharacterDto(t) }
+            .map { t -> CharacterDto(t) }
             .firstOrNull() ?: throw CharacterNotFoundException("Character with name $name not found")
     }
 
@@ -56,4 +56,9 @@ open class CharacterService(private val characterRepository: CharacterRepository
         return starWarsApiService.getAllPeople()
     }
 
+    fun createCharacter(characterDto: CharacterDto): CharacterDto {
+        val characterEntity = CharacterEntity(characterDto)
+
+        return CharacterDto(characterRepository.save(characterEntity))
+    }
 }

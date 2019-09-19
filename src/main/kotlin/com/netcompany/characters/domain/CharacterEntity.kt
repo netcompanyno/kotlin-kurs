@@ -1,5 +1,6 @@
 package com.netcompany.characters.domain
 
+import com.netcompany.characters.dto.CharacterDto
 import javax.persistence.*
 
 /**
@@ -18,4 +19,6 @@ data class CharacterEntity(var name: String, var height: Int, var homeworld: Str
 
     @Deprecated("")
     constructor() : this("", 0, "")
+
+    constructor(characterDto: CharacterDto): this(characterDto.name, characterDto.height, characterDto.homeworld)
 }

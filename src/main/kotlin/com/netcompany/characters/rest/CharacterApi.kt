@@ -47,6 +47,15 @@ interface CharacterApi {
     fun getAllCharacters(): List<CharacterDto>
 
     /**
+     * Create a character.
+     *
+     * @return the created character
+     */
+    @ApiOperation("Create a character")
+    @ApiResponse(code = 200, message = "Created a character")
+    fun createCharacter(characterDto: CharacterDto) : CharacterDto
+
+    /**
      * Get all characters from the Star Wars API.
      *
      * @return a list of {@link CharacterDto characters}

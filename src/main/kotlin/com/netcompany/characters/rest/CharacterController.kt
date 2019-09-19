@@ -3,6 +3,7 @@ package com.netcompany.characters.rest
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 /**
  * Controller that handles REST requests regarding characters.
@@ -22,6 +23,12 @@ class CharacterController(private val characterService: CharacterService) : Char
     @GetMapping(path = ["/characters/name/{name}"])
     override fun getByName(@PathVariable name: String): CharacterDto {
         return characterService.getByName(name)
+    }
+
+    @PostMapping(path = ["/characters"])
+    override fun createCharacter(@Valid @RequestBody character: CharacterDto): CharacterDto {
+        return characterService.createCharacter(character)
+
     }
 
     @GetMapping(path = ["/swapi/characters"])
