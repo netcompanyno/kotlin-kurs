@@ -27,7 +27,7 @@ class CharacterControllerTest {
 
     @Test
     fun getByIdCallsServiceAndReturnsResult() {
-        val expected = CharacterDto(0, "Luke Skywalker", 172)
+        val expected = CharacterDto(0, "Luke Skywalker", 172, "Tatooine")
 
         `when`(characterService.getById(1)).thenReturn(expected)
 
@@ -54,7 +54,7 @@ class CharacterControllerTest {
 
     @Test
     fun getByNameCallsServiceAndReturnsResults() {
-        val expected = CharacterDto(0, "Yoda", 66)
+        val expected = CharacterDto(0, "Yoda", 66, "unknown")
 
         `when`(characterService.getByName("Yoda")).thenReturn(expected)
 

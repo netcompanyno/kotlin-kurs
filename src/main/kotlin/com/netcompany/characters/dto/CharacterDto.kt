@@ -6,8 +6,10 @@ import com.netcompany.characters.domain.CharacterEntity
 /**
  * Data transfer object representing a character.
  */
-data class CharacterDto(val id: Int?, val name: String, val height: Int) {
-    constructor(characterEntity: CharacterEntity) : this(characterEntity.id, characterEntity.name, characterEntity.height)
+data class CharacterDto(var id: Int?, var name: String, var height: Int, var homeworld: String) {
+    constructor(characterEntity: CharacterEntity) :
+        this(characterEntity.id, characterEntity.name, characterEntity.height, characterEntity.homeworld)
 
-    constructor(peopleDto: PeopleDto): this(null, peopleDto.name, peopleDto.height.toInt())
+    constructor(peopleDto: PeopleDto) :
+        this(null, peopleDto.name, peopleDto.height.toInt(), peopleDto.homeworld)
 }

@@ -31,7 +31,7 @@ class CharacterIT {
     @Test
     @Throws(Exception::class)
     fun getCharacterByIdReturnsExistingCharacter() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
+        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
 
         characterRepository.save(characterEntity)
 
@@ -53,7 +53,7 @@ class CharacterIT {
     @Test
     @Throws(Exception::class)
     fun getCharacterByNameReturnsExistingCharacter() {
-        val characterEntity = CharacterEntity(1, "Yoda", 66)
+        val characterEntity = CharacterEntity(1, "Yoda", 66, "unknown")
 
         characterRepository.save(characterEntity)
 
@@ -83,9 +83,9 @@ class CharacterIT {
     @Test
     @Throws(Exception::class)
     fun getAllCharactersReturnsArrayOfCharacters() {
-        val luke = CharacterEntity(1, "Luke Skywalker", 172)
+        val luke = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
         characterRepository.save(luke)
-        val yoda = CharacterEntity(2, "Yoda", 66)
+        val yoda = CharacterEntity(2, "Yoda", 66, "unknown")
         characterRepository.save(yoda)
 
         mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))

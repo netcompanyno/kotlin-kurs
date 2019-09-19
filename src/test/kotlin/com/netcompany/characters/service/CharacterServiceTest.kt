@@ -38,7 +38,7 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdConvertsAndReturnsResult() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
+        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
 
         val retrievedThing = characterService.getById(1)
@@ -68,7 +68,7 @@ class CharacterServiceTest {
     @Test
     fun getAllThingsConvertsAndReturnsResult() {
         val characterEntities =
-            listOf(CharacterEntity(1, "Luke Skywalker", 172), CharacterEntity(2, "Yoda", 66))
+            listOf(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine"), CharacterEntity(2, "Yoda", 66, "unknown"))
 
         `when`(characterRepository.findAll()).thenReturn(characterEntities)
 
@@ -88,7 +88,7 @@ class CharacterServiceTest {
 
     @Test
     fun getByNameInvokesRepository() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
+        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
 
         `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(listOf(characterEntity))
 
@@ -99,7 +99,7 @@ class CharacterServiceTest {
 
     @Test
     fun getByNameConvertsAndReturnsResult() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172)
+        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
 
         `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(listOf(characterEntity))
 
