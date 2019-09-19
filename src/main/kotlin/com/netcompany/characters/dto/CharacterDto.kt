@@ -17,9 +17,7 @@ data class CharacterDto(
     @get: Min(1) @get: Max(4000) var height: Int,
     @get: Size(min = 2) var homeworld: String) {
 
-    constructor(characterEntity: CharacterEntity) :
-        this(characterEntity.id, characterEntity.name, characterEntity.height, characterEntity.homeworld)
+    constructor(entity: CharacterEntity) : this(entity.id, entity.name, entity.height, entity.homeworld)
 
-    constructor(peopleDto: PeopleDto) :
-        this(null, peopleDto.name, peopleDto.height.toInt(), peopleDto.homeworld)
+    constructor(peopleDto: PeopleDto) : this(null, peopleDto.name, peopleDto.height.toInt(), peopleDto.homeworld)
 }

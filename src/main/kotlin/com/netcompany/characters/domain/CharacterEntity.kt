@@ -8,7 +8,6 @@ import javax.persistence.*
  */
 @Entity
 data class CharacterEntity(var name: String, var height: Int, var homeworld: String) {
-    // TODO denne virker nok ikke som den skal...
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Int = 0
@@ -17,8 +16,5 @@ data class CharacterEntity(var name: String, var height: Int, var homeworld: Str
         this.id = id
     }
 
-    @Deprecated("")
-    constructor() : this("", 0, "")
-
-    constructor(characterDto: CharacterDto): this(characterDto.name, characterDto.height, characterDto.homeworld)
+    constructor(dto: CharacterDto): this(dto.name, dto.height, dto.homeworld)
 }

@@ -29,7 +29,8 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdInvokesRepository() {
-        `when`(characterRepository.findById(1)).thenReturn(Optional.of(CharacterEntity()))
+        `when`(characterRepository.findById(1))
+            .thenReturn(Optional.of(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")))
 
         characterService.getById(1)
 
