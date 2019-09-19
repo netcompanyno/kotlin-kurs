@@ -6,13 +6,13 @@ import com.netcompany.characters.exception.CharacterNotFoundException
 import com.netcompany.characters.repository.CharacterRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 /**
  * Service for functionality regarding characters.
  */
 @Service
-open class CharacterService(private val characterRepository: CharacterRepository) {
+open class CharacterService(private val characterRepository: CharacterRepository,
+                            private val starWarsApiService: StarWarsApiService) {
 
     /**
      * Gets the character with the given id.
@@ -21,8 +21,7 @@ open class CharacterService(private val characterRepository: CharacterRepository
      * @return the character with the given id
      * @throws CharacterNotFoundException if no character with given id exists
      */
-    @Transactional(readOnly = true)
-    open fun getById(id: Int): CharacterDto {
+    fun getById(id: Int): CharacterDto {
         val characterEntity: CharacterEntity = characterRepository.findByIdOrNull(id)
             ?: throw CharacterNotFoundException("Character with id $id not found")
 
@@ -36,8 +35,7 @@ open class CharacterService(private val characterRepository: CharacterRepository
      * @return the character with the given name
      * @throws CharacterNotFoundException if no character with given name exists
      */
-    @Transactional(readOnly = true)
-    open fun getByName(name: String): CharacterDto {
+    fun getByName(name: String): CharacterDto {
         return characterRepository.findByName(name)
             .map{t -> CharacterDto(t) }
             .firstOrNull() ?: throw CharacterNotFoundException("Character with name $name not found")
@@ -48,10 +46,14 @@ open class CharacterService(private val characterRepository: CharacterRepository
      *
      * @return a list of characters
      */
-    @Transactional(readOnly = true)
-    open fun getAllCharacters(): List<CharacterDto> {
+    fun getAllCharacters(): List<CharacterDto> {
         return characterRepository.findAll()
             .map { t -> CharacterDto(t) }
             .toList()
     }
+
+    fun getAllcharactersFromStarWarsApi(): List<CharacterDto> {
+        return starWarsApiService.getAllPeople()
+    }
+
 }

@@ -15,12 +15,17 @@ class CharacterController(private val characterService: CharacterService) : Char
     }
 
     @GetMapping(path = ["/characters"])
-    override fun getAllCharacters(): kotlin.collections.List<CharacterDto> {
+    override fun getAllCharacters(): List<CharacterDto> {
         return characterService.getAllCharacters()
     }
 
     @GetMapping(path = ["/characters/name/{name}"])
     override fun getByName(@PathVariable name: String): CharacterDto {
         return characterService.getByName(name)
+    }
+
+    @GetMapping(path = ["/swapi/characters"])
+    override fun getAllCharactersFromStarWarsApi(): List<CharacterDto> {
+        return characterService.getAllcharactersFromStarWarsApi()
     }
 }

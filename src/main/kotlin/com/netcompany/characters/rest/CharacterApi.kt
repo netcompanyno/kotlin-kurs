@@ -45,4 +45,13 @@ interface CharacterApi {
     @ApiOperation("Get all the characters!")
     @ApiResponse(code = 200, message = "Successfully retrieved all the characters")
     fun getAllCharacters(): List<CharacterDto>
+
+    /**
+     * Get all characters from the Star Wars API.
+     *
+     * @return a list of {@link CharacterDto characters}
+     */
+    @ApiOperation("Get all the characters!")
+    @ApiResponse(code = 200, message = "Successfully retrieved all the characters")
+    fun getAllCharactersFromStarWarsApi(): List<CharacterDto>
 }
