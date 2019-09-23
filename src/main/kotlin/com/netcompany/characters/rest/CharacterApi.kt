@@ -13,7 +13,7 @@ interface CharacterApi {
      * @param id id of the {@link CharacterDto character} to be retrieved
      * @return a character, if one is found
      */
-    @ApiOperation("Get the character with the given id")
+    @ApiOperation("Get the character with the given id", nickname = "getCharacterById", produces = "application/json")
     @ApiResponses(
         ApiResponse(code = 200, message = "Successfully retrieved a character"),
         ApiResponse(code = 404, message = "Could not find a character with the given id")
@@ -23,55 +23,36 @@ interface CharacterApi {
     ): CharacterDto
 
     /**
-     * Get a character with the given name.
+     * Get all characters with the given name.
      *
-     * @param name name of the character we want to retrieve
+     * @param name name of the character(s). If null, all characters will be returned.
      * @return a list of characters
      */
-    @ApiOperation("Get character by name")
-    @ApiResponses(
-        ApiResponse(code = 200, message = "Successfully retrieved a character"),
-        ApiResponse(code = 404, message = "No characters with given name found")
-    )
-    fun getByName(
-        @ApiParam(value = "The name of the character to retrieve", required = true, example = "R2D2") name: String
-    ): CharacterDto
-
-    /**
-     * Get all characters.
-     *
-     * @return a list of characters
-     */
-    @ApiOperation("Get all characters")
+    @ApiOperation("Get characters", nickname = "getCharacters", produces = "application/json")
     @ApiResponse(code = 200, message = "Successfully retrieved all the characters")
-    fun getAllCharacters(): List<CharacterDto>
+    fun getCharacters(
+        @ApiParam(value = "The name of the character to retrieve", required = false, example = "R2-D2") name: String?
+    ): List<CharacterDto>
 
     /**
      * Create a character.
      *
      * @return the created character
      */
-    @ApiOperation("Create a character")
+    @ApiOperation("Create a character", nickname = "createCharacter", consumes = "application/json", produces = "application/json")
     @ApiResponse(code = 200, message = "Created a character")
     fun createCharacter(@ApiParam(value = "The character to create", required = true) character: CharacterDto): CharacterDto
 
     /**
-     * Get all characters from the Star Wars API.
+     * Get characters from the Star Wars API.
+     *
+     * @param name the name of the character(s). If null, all characters will be returned.
      *
      * @return a list of characters
      */
-    @ApiOperation("Get all characters from the Star Wars API")
-    @ApiResponse(code = 200, message = "Successfully retrieved all the characters")
-    fun getAllCharactersFromStarWarsApi(): List<CharacterDto>
-
-    /**
-     * Get characters from the Star Wars API by name.
-     *
-     * @return a list of characters
-     */
-    @ApiOperation("Get all characters from the Star Wars API with a given name")
+    @ApiOperation("Get characters from the Star Wars API", nickname = "getCharactersFromSWAPI", produces = "application/json")
     @ApiResponse(code = 200, message = "Successfully retrieved characters")
-    fun getCharacterFromStarWarsApiByName(
-        @ApiParam(value = "The name of the character(s) to retrieve", required = true, example = "Yoda") name: String
+    fun getCharactersFromStarWarsApi(
+        @ApiParam(value = "The name of the character(s) to retrieve", required = false, example = "Yoda") name: String?
     ): List<CharacterDto>
 }

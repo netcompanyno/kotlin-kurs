@@ -40,11 +40,11 @@ class CharacterControllerTest {
     }
 
     @Test
-    fun getAllCharactersCallsServiceAndReturnsResult() {
+    fun getCharactersCallGetAllCharactersInServiceIfNameIsNotSupplied() {
         val expected = ArrayList<CharacterDto>()
         `when`(characterService.getAllCharacters()).thenReturn(expected)
 
-        val result = characterController.getAllCharacters()
+        val result = characterController.getCharacters(null)
 
         assertNotNull(result)
         assertSame(expected, result)
@@ -53,12 +53,12 @@ class CharacterControllerTest {
     }
 
     @Test
-    fun getByNameCallsServiceAndReturnsResults() {
-        val expected = CharacterDto(0, "Yoda", 66, "unknown")
+    fun getCharactersCallsGetByNameInServiceIfNameIsSupplied() {
+        val expected = listOf(CharacterDto(0, "Yoda", 66, "unknown"))
 
         `when`(characterService.getByName("Yoda")).thenReturn(expected)
 
-        val result = characterController.getByName("Yoda")
+        val result = characterController.getCharacters("Yoda")
 
         assertNotNull(result)
         assertSame(expected, result)

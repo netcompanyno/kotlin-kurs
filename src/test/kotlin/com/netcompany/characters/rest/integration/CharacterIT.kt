@@ -3,8 +3,8 @@ package com.netcompany.characters.rest.integration
 import com.netcompany.characters.Application
 import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.repository.CharacterRepository
-import org.hamcrest.Matchers
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.containsString
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -59,17 +59,9 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.get("/characters?name=Yoda").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.id", `is`(characterEntity.id)))
-            .andExpect(jsonPath("$.name", `is`("Yoda")))
-            .andExpect(jsonPath("$.height", `is`(66)))
-    }
-
-    @Test
-    @Throws(Exception::class)
-    fun getCharacterByNameReturnsNotFoundOnNonExistingCharacter() {
-        mvc.perform(MockMvcRequestBuilders.get("/characters/?name=Yoda").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isNotFound)
-            .andExpect(status().reason(containsString("Could not find character")))
+            .andExpect(jsonPath("$[0].id", `is`(characterEntity.id)))
+            .andExpect(jsonPath("$[0].name", `is`("Yoda")))
+            .andExpect(jsonPath("$[0].height", `is`(66)))
     }
 
     @Test

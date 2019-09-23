@@ -34,10 +34,10 @@ class CharacterService(private var characterRepository: CharacterRepository,
      * @return the character with the given name
      * @throws CharacterNotFoundException if no character with given name exists
      */
-    fun getByName(name: String): CharacterDto {
+    fun getByName(name: String): List<CharacterDto> {
         return characterRepository.findByName(name)
             .map { t -> CharacterDto(t) }
-            .firstOrNull() ?: throw CharacterNotFoundException("Character with name $name not found")
+            .toList()
     }
 
     /**

@@ -106,8 +106,11 @@ class CharacterServiceTest {
 
         `when`(characterRepository.findByName("Luke Skywalker")).thenReturn(listOf(characterEntity))
 
-        val characterDto = characterService.getByName("Luke Skywalker")
+        val characters = characterService.getByName("Luke Skywalker")
 
+        assertEquals(characters.size, 1)
+
+        val characterDto = characters[0]
         assertNotNull(characterDto)
 
         assertEquals(1, characterDto.id)
