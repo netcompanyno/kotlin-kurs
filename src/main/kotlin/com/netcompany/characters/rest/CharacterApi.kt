@@ -53,7 +53,7 @@ interface CharacterApi {
      */
     @ApiOperation("Create a character")
     @ApiResponse(code = 200, message = "Created a character")
-    fun createCharacter(characterDto: CharacterDto) : CharacterDto
+    fun createCharacter(character: CharacterDto) : CharacterDto
 
     /**
      * Get all characters from the Star Wars API.

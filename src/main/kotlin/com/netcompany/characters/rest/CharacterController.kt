@@ -20,15 +20,14 @@ class CharacterController(private val characterService: CharacterService) : Char
         return characterService.getAllCharacters()
     }
 
-    @GetMapping(path = ["/characters/name/{name}"])
-    override fun getByName(@PathVariable name: String): CharacterDto {
+    @GetMapping(path = ["/characters?name={name}"])
+    override fun getByName(@PathVariable @RequestParam name: String): CharacterDto {
         return characterService.getByName(name)
     }
 
     @PostMapping(path = ["/characters"])
     override fun createCharacter(@Valid @RequestBody character: CharacterDto): CharacterDto {
         return characterService.createCharacter(character)
-
     }
 
     @GetMapping(path = ["/swapi/characters"])
