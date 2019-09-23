@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service
 @Service
 class CharacterService(private var characterRepository: CharacterRepository,
                        private val starWarsApiService: StarWarsApiService) {
-
     /**
      * Gets the character with the given id.
      *
@@ -42,7 +41,7 @@ class CharacterService(private var characterRepository: CharacterRepository,
     }
 
     /**
-     * Gets all the characters
+     * Gets all the characters.
      *
      * @return a list of characters
      */
@@ -52,13 +51,33 @@ class CharacterService(private var characterRepository: CharacterRepository,
             .toList()
     }
 
-    fun getAllcharactersFromStarWarsApi(): List<CharacterDto> {
-        return starWarsApiService.getAllPeople()
-    }
-
+    /**
+     * Creates a character.
+     *
+     * @param characterDto dto representing the character
+     * @return dto representing the newly created character
+     */
     fun createCharacter(characterDto: CharacterDto): CharacterDto {
         val characterEntity = CharacterEntity(characterDto)
 
         return CharacterDto(characterRepository.save(characterEntity))
+    }
+
+    /**
+     * Get all characters from the Star Wars API.
+     *
+     * @return a list of characters
+     */
+    fun getAllcharactersFromStarWarsApi(): List<CharacterDto> {
+        return starWarsApiService.getAllCharacters()
+    }
+
+    /**
+     * Get characters from the Star Wars API with a given name.
+     *
+     * @return a list containing all the matching characters
+     */
+    fun getCharacterFromStarWarsApiByName(name: String): List<CharacterDto> {
+        return starWarsApiService.getCharactersByName(name)
     }
 }

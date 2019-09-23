@@ -20,8 +20,8 @@ class CharacterController(private val characterService: CharacterService) : Char
         return characterService.getAllCharacters()
     }
 
-    @GetMapping(path = ["/characters?name={name}"])
-    override fun getByName(@PathVariable @RequestParam name: String): CharacterDto {
+    @GetMapping(path = ["/characters"], params = ["name"])
+    override fun getByName(@RequestParam(required = true) name: String): CharacterDto {
         return characterService.getByName(name)
     }
 
@@ -33,5 +33,10 @@ class CharacterController(private val characterService: CharacterService) : Char
     @GetMapping(path = ["/swapi/characters"])
     override fun getAllCharactersFromStarWarsApi(): List<CharacterDto> {
         return characterService.getAllcharactersFromStarWarsApi()
+    }
+
+    @GetMapping(path = ["/swapi/characters"], params = ["name"])
+    override fun getCharacterFromStarWarsApiByName(@RequestParam(required = true) name: String): List<CharacterDto> {
+        return characterService.getCharacterFromStarWarsApiByName(name)
     }
 }

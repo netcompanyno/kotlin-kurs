@@ -14,16 +14,27 @@ class StarWarsApiClient {
     private val BASE_URL = "https://swapi.co/api"
 
     fun getAllPeople(): PeopleResultDto {
-        val (_, _, result) = "$BASE_URL/people?format=json".httpGet().responseString()
-        val (body, _) = result
+        val responseBody = makeGetRequest("$BASE_URL/people?format=json")
 
-        return mapper.readValue(body!!)
+        return mapper.readValue(responseBody)
+    }
+
+    fun getPeopleByName(name: String): PeopleResultDto {
+        val responseBody = makeGetRequest("$BASE_URL/people?search=$name&format=json")
+
+        return mapper.readValue(responseBody)
     }
 
     fun getPlanet(planetId: String): PlanetDto {
-        val (_, _, result) = "$BASE_URL/planets/$planetId?format=json".httpGet().responseString()
+        val responseBody = makeGetRequest("$BASE_URL/planets/$planetId?format=json")
+
+        return mapper.readValue(responseBody)
+    }
+
+    private fun makeGetRequest(url: String): String {
+        val (_, _, result) = url.httpGet().responseString()
         val (body, _) = result
 
-        return mapper.readValue(body!!)
+        return body!!
     }
 }
