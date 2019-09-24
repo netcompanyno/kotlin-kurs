@@ -7,7 +7,6 @@
     <groupId>com.netcompany.kotlin</groupId>
     <artifactId>kotlin-kurs</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <properties>
         <java.version>11</java.version>
