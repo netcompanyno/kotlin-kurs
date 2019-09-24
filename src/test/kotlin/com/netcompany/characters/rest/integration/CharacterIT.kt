@@ -2,6 +2,7 @@ package com.netcompany.characters.rest.integration
 
 import com.netcompany.characters.Application
 import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.notNullValue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,9 +26,21 @@ class CharacterIT {
 
 
     @Test
-    fun getAllCharactersFromStarWarsApiReturnsCharacters() {
+    fun helloReturnsHelloString() {
         mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$", `is`("Hello, Yoda!")))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun getCharacterByNameReturnsExistingCharacter() {
+        mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.length()", `is`(1)))
+            .andExpect(jsonPath("$[0].id", notNullValue()))
+            .andExpect(jsonPath("$[0].name", notNullValue()))
+            .andExpect(jsonPath("$[0].height", notNullValue()))
+            .andExpect(jsonPath("$[0].homeworld", notNullValue()))
     }
 }

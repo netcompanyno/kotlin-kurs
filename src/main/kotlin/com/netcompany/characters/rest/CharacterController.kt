@@ -1,22 +1,33 @@
 package com.netcompany.characters.rest
 
+import com.netcompany.characters.dto.CharacterDto
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
- * Oppgave 1
+ * Oppgave 2
  *
- * Lag et endepunkt med path /hello, som returnerer tekststrengen "Hello, Yoda!".
+ * I oppgave 1 returnerte endepunktet vårt kun en tekststreng.
  *
- * Applikasjonen kjøres ved å kjøre `mvn spring-boot:run` fra en terminal eller ved å kjøre klassen Application fra IDE.
+ * Vi skal nå lage et endepunkt som returnerer en faktisk character i stedet.
  *
- * Etter å ha startet opp applikasjonen kan du kunne åpne http://localhost:5000/api/hello i en nettleser.
- * Om du har fått til oppgaven skal da teksten "Hello, Yoda!" vises.
+ * Først må vi lage et objekt som representerer en character. Dette er påbegynt i filen CharacterDto.kt.
+ * Åpne filen og ferdigstill det før du kommer tilbake hit.
  *
- * Etter å ha gjort oppgaven kan du åpne klassen CharacterIT og kjøre testen der for å se om du har fått det til.
+ * Funksjonen for endepunktet er påbegynt under. Pathen skal være /characters, og siden vi senere skal kunne hente ut
+ * flere av gangen, velger vi å la endepunktet returnere en liste.
+ *
+ * Opprett en ny fritt valgt CharacterDto i metoden under og la endepunktet returnere denne.
+ *
+ * Når du er ferdig kan du kjøre testene i CharacterIT for å se om du har fått det til riktig.
+ *
  */
 @RestController
 class CharacterController {
     @GetMapping(path = ["/hello"])
     fun hello() =  "Hello, Yoda!"
+
+    fun getCharacters(): List<CharacterDto> {
+        return emptyList()
+    }
 }
