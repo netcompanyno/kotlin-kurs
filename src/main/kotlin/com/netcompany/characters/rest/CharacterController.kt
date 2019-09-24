@@ -13,4 +13,4 @@ package com.netcompany.characters.rest
  * Etter å ha gjort oppgaven kan du åpne klassen CharacterIT og kjøre testen der for å se om du har fått det til.
  */
 
-class CharacterController: CharacterApi
+class CharacterController
