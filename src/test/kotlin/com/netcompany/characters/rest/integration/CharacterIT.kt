@@ -25,7 +25,7 @@ class CharacterIT {
 
 
     @Test
-    fun getAllCharactersFromStarWarsApiReturnsCharacters() {
+    fun helloReturnsHelloString() {
         mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$", `is`("Hello, Yoda!")))
