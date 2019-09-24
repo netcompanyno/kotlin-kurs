@@ -1,5 +1,8 @@
 package com.netcompany.characters.rest
 
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+
 /**
  * Oppgave 1
  *
@@ -12,5 +15,8 @@ package com.netcompany.characters.rest
  *
  * Etter å ha gjort oppgaven kan du åpne klassen CharacterIT og kjøre testen der for å se om du har fått det til.
  */
-
-class CharacterController
+@RestController
+class CharacterController {
+    @GetMapping(path = ["/hello"])
+    fun hello() =  "Hello, Yoda!"
+}
