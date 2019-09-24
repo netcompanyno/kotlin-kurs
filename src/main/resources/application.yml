@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.enable_lazy_load_no_trans: true
+
+server:
+  servlet.context-path: /api
+  port: 5000
