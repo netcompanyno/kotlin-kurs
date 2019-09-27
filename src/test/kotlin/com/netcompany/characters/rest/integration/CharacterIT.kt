@@ -34,7 +34,7 @@ class CharacterIT {
 
     @Test
     @Throws(Exception::class)
-    fun getCharacterByNameReturnsExistingCharacter() {
+    fun getCharacterReturnsExistingCharacter() {
         mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.length()", `is`(1)))
