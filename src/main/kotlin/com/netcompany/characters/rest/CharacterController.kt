@@ -5,29 +5,25 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
- * Oppgave 2
+ * Oppgave 3
  *
- * I oppgave 1 returnerte endepunktet vårt kun en tekststreng.
+ * Nå returnerer vi en liste av (en enkelt) characters fra endepunktet!
  *
- * Vi skal nå lage et endepunkt som returnerer en faktisk character i stedet.
+ * Vi ser derimot at initialiseringen av objektet skjer i Controlleren, som egentlig kun skal håndtere ting relatert
+ * til selve request og response fra API-et.
  *
- * Først må vi lage et objekt som representerer en character. Dette er påbegynt i filen CharacterDto.kt.
- * Åpne filen og ferdigstill det før du kommer tilbake hit.
+ * Derfor ønsker vi å bruke klassen CharacterService i stedet til dette. Flytt initialiseringen dit, og kall denne
+ * fra Controlleren.
  *
- * Funksjonen for endepunktet er påbegynt under. Pathen skal være /characters, og siden vi senere skal kunne hente ut
- * flere av gangen, velger vi å la endepunktet returnere en liste.
- *
- * Opprett en ny fritt valgt CharacterDto i metoden under og la endepunktet returnere denne.
- *
- * Når du er ferdig kan du kjøre testene i CharacterIT for å se om du har fått det til riktig.
- *
+ * Når du er ferdig kan du kjøre testene CharacterControllerTest og CharacterIT for å se om du har fått det til riktig.
  */
 @RestController
 class CharacterController {
     @GetMapping(path = ["/hello"])
     fun hello() =  "Hello, Yoda!"
 
+    @GetMapping(path = ["/characters"])
     fun getCharacters(): List<CharacterDto> {
-        return emptyList()
+        return listOf(CharacterDto("Yoda", 66, "unknown"))
     }
 }
