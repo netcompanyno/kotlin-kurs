@@ -11,6 +11,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertEquals
 
 /**
  * Oppgave 3
@@ -38,7 +39,8 @@ class CharacterControllerTest {
         val result = characterController.getCharacters()
 
         assertNotNull(result)
-        assertSame(character, result)
+        assertEquals(1, result.size)
+        assertSame(character, result[0])
 
         verify(characterService).getCharacters()
     }
