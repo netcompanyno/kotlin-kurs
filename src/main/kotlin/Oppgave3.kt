@@ -1,5 +1,3 @@
-import kotlin.random.Random
-
 /**
  * Oppgave 3
  *
