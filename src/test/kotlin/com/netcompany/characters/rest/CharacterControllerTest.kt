@@ -40,7 +40,7 @@ class CharacterControllerTest {
     }
 
     @Test
-    fun getCharactersCallGetAllCharactersInServiceIfNameIsNotSupplied() {
+    fun getCharactersCallsGetAllCharactersInServiceIfNameIsNotSupplied() {
         val expected = ArrayList<CharacterDto>()
         `when`(characterService.getAllCharacters()).thenReturn(expected)
 
