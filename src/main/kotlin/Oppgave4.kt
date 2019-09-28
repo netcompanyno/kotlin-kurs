@@ -11,23 +11,38 @@
  * Map: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map
  */
 
+// Løsningsforslag oppgave 4
+
 // Finn kunder fra den gitte byen.
-fun Shop.getCustomersFrom(city: City): List<Customer> = TODO()
+fun Shop.getCustomersFrom(city: City): List<Customer> =
+    customers.filter { it.city == city }
 
 // Finn ordreId på kundens leverte ordre.
-fun Customer.getDeliveredOrderIds(): List<Int> = TODO()
+fun Customer.getDeliveredOrderIds(): List<Int> =
+    orders.filter { it.isDelivered }
+        .map { it.orderId }
 
 // Sjekk om alle produktene i ordren koster mer enn den gitte prisen.
-fun Order.isAllProductsMoreExpensiveThan(amount: Double): Boolean = TODO()
+fun Order.isAllProductsMoreExpensiveThan(amount: Double): Boolean =
+    products.all { it.price > amount }
 
 // Gi et map fra by til et set av kundene som er derfra.
-fun Shop.groupCustomersByCity(): Map<City, Set<Customer>> = TODO()
+fun Shop.groupCustomersByCity(): Map<City, Set<Customer>> =
+    customers.groupBy { it.city }
+        .mapValues { (_, value) -> value.toSet() }
 
 // Finn kundens dyreste ordre.
-fun Customer.getMostExpensiveOrder(): Order? = TODO()
+fun Customer.getMostExpensiveOrder(): Order? =
+    orders.maxBy { it.products.sumByDouble { it.price } }
 
 // Finn butikken som har solgt varer for mest penger.
-fun List<Shop>.findMostValuableShop(): Shop? = TODO()
+fun List<Shop>.findMostValuableShop(): Shop? =
+    maxBy { shop ->
+        shop.customers
+            .flatMap { it.orders }
+            .flatMap { it.products }
+            .sumByDouble { it.price }
+    }
 
 
 // -------------- Ikke endre dette --------------
