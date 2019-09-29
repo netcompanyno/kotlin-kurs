@@ -8,18 +8,6 @@ import kotlin.test.assertTrue
 class Oppgave4Test {
 
     @Test
-    fun test() {
-
-        println(shops.maxBy {
-            it.customers
-                .flatMap { it.orders }
-                .flatMap { it.products }
-                .sumByDouble { it.price }
-        })
-
-    }
-
-    @Test
     fun `getCustomersFrom skal returnere kunder fra gitt by`() {
         val customers = shop4.getCustomersFrom(trondheim)
         assertTrue(customers.all { it.city == trondheim })
