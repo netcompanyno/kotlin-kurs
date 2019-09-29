@@ -13,9 +13,10 @@
 
 // Løsningsforslag oppgave 4
 
-// Finn kunder fra den gitte byen.
+// Finn kunder fra den gitte byen, sortert på kundens navn.
 fun Shop.getCustomersFrom(city: City): List<Customer> =
     customers.filter { it.city == city }
+        .sortedBy { it.name }
 
 // Finn ordreId på kundens leverte ordre.
 fun Customer.getDeliveredOrderIds(): List<Int> =
