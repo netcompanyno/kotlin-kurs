@@ -20,9 +20,12 @@ class Oppgave4Test {
     }
 
     @Test
-    fun `getDeliveredOrderIds skal hente kundens ordreIder`() {
+    fun `getDeliveredOrderIds skal hente kundens leverte ordreIder`() {
         val orderIds = customer1.getDeliveredOrderIds()
-        assertTrue(orderIds.containsAll(listOf(1, 4, 5)))
+
+        val expected = listOf(1, 5)
+        assertTrue(orderIds.containsAll(expected),
+            "Expected: $expected. Actual result: $orderIds")
     }
 
     @Test
