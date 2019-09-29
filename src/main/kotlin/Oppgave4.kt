@@ -11,7 +11,7 @@
  * Map: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map
  */
 
-// Finn kunder fra den gitte byen.
+// Finn kunder fra den gitte byen, sortert på kundens navn.
 fun Shop.getCustomersFrom(city: City): List<Customer> = TODO()
 
 // Finn ordreId på kundens leverte ordre.
