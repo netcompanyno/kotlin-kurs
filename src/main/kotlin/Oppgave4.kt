@@ -29,7 +29,7 @@ fun Order.isAllProductsMoreExpensiveThan(amount: Double): Boolean =
 // Gi et map fra by til et set av kundene som er derfra.
 fun Shop.groupCustomersByCity(): Map<City, Set<Customer>> =
     customers.groupBy { it.city }
-        .mapValues { (_, value) -> value.toSet() }
+        .mapValues { entry -> entry.value.toSet() }
 
 // Finn kundens dyreste ordre.
 fun Customer.getMostExpensiveOrder(): Order? =
