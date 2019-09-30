@@ -38,7 +38,6 @@ class CharacterIT {
         mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.length()", `is`(1)))
-            .andExpect(jsonPath("$[0].id", notNullValue()))
             .andExpect(jsonPath("$[0].name", notNullValue()))
             .andExpect(jsonPath("$[0].height", notNullValue()))
             .andExpect(jsonPath("$[0].homeworld", notNullValue()))
