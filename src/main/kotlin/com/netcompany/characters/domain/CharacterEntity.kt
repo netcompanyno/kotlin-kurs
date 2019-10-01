@@ -9,7 +9,7 @@ import javax.persistence.*
 @Entity
 data class CharacterEntity(var name: String, var height: Int, var homeworld: String) {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     var id: Int = 0
 
     constructor(id: Int, name: String, height: Int, homeworld: String) : this(name, height, homeworld) {
