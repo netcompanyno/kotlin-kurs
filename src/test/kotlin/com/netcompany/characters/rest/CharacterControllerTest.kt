@@ -2,9 +2,9 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertSame
-import org.junit.jupiter.api.Test
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertSame
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
