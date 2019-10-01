@@ -44,12 +44,12 @@ class CharacterServiceTest {
         val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
 
-        val retrievedThing = characterService.getById(1)
+        val retrievedCharacter = characterService.getById(1)
 
-        assertNotNull(retrievedThing)
-        assertEquals(1, retrievedThing.id)
-        assertEquals("Luke Skywalker", retrievedThing.name)
-        assertEquals(172, retrievedThing.height)
+        assertNotNull(retrievedCharacter)
+        assertEquals(1, retrievedCharacter.id)
+        assertEquals("Luke Skywalker", retrievedCharacter.name)
+        assertEquals(172, retrievedCharacter.height)
     }
 
     @Test
@@ -60,7 +60,7 @@ class CharacterServiceTest {
     }
 
     @Test
-    fun getAllThingsInvokesRepository() {
+    fun getAllCharactersInvokesRepository() {
         `when`(characterRepository.findAll()).thenReturn(emptyList())
 
         characterService.getAllCharacters()
@@ -69,7 +69,7 @@ class CharacterServiceTest {
     }
 
     @Test
-    fun getAllThingsConvertsAndReturnsResult() {
+    fun getAllCharactersConvertsAndReturnsResult() {
         val characterEntities =
             listOf(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine"), CharacterEntity(2, "Yoda", 66, "unknown"))
 
