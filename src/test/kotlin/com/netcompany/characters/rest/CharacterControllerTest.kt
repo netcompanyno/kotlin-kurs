@@ -2,18 +2,22 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertSame
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertSame
+import org.junit.jupiter.api.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
-import kotlin.test.Test
+import kotlin.test.assertEquals
 
 /**
- * Tests [CharacterController]
+ * Oppgave 3
+ *
+ * Denne testen er kommentert ut fordi koden i utgangspunktet ikke vil kompilere. Når du har gjort oppgaven kan du
+ * kommentere inn testen igjen og kjøre den.
  */
 @RunWith(MockitoJUnitRunner::class)
 class CharacterControllerTest {
@@ -25,44 +29,21 @@ class CharacterControllerTest {
     lateinit var characterService: CharacterService
 
 
+/*
     @Test
-    fun getByIdCallsServiceAndReturnsResult() {
-        val expected = CharacterDto(0, "Luke Skywalker", 172, "Tatooine")
+    fun getCharactersCallsGetCharactersInService() {
+        val character = CharacterDto("Luke Skywalker", 172, "Tatooine")
 
-        `when`(characterService.getById(1)).thenReturn(expected)
+        `when`(characterService.getCharacters()).thenReturn(listOf(character))
 
-        val result = characterController.getById(1)
+        val result = characterController.getCharacters()
 
         assertNotNull(result)
-        assertSame(expected, result)
+        assertEquals(1, result.size)
+        assertSame(character, result[0])
 
-        verify(characterService).getById(1)
+        verify(characterService).getCharacters()
     }
+*/
 
-    @Test
-    fun getCharactersCallsGetAllCharactersInServiceIfNameIsNotSupplied() {
-        val expected = ArrayList<CharacterDto>()
-        `when`(characterService.getAllCharacters()).thenReturn(expected)
-
-        val result = characterController.getCharacters(null)
-
-        assertNotNull(result)
-        assertSame(expected, result)
-
-        verify(characterService).getAllCharacters()
-    }
-
-    @Test
-    fun getCharactersCallsGetByNameInServiceIfNameIsSupplied() {
-        val expected = listOf(CharacterDto(0, "Yoda", 66, "unknown"))
-
-        `when`(characterService.getByName("Yoda")).thenReturn(expected)
-
-        val result = characterController.getCharacters("Yoda")
-
-        assertNotNull(result)
-        assertSame(expected, result)
-
-        verify(characterService).getByName("Yoda")
-    }
 }
