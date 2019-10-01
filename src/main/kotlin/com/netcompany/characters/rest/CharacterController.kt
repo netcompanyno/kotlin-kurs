@@ -1,8 +1,8 @@
 package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
 
 /**
  * Oppgave 2
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController
  * Når du er ferdig kan du kjøre testene i CharacterIT for å se om du har fått det til riktig.
  *
  */
-@RestController
+@Controller
 class CharacterController {
     @GetMapping(path = ["/hello"])
     fun hello() =  "Hello, Yoda!"
