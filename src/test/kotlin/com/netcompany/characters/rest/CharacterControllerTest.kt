@@ -2,9 +2,9 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertSame
-import org.junit.jupiter.api.Test
+import junit.framework.Assert.assertNotNull
+import junit.framework.Assert.assertSame
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -29,7 +29,6 @@ class CharacterControllerTest {
     lateinit var characterService: CharacterService
 
 
-/*
     @Test
     fun getCharactersCallsGetCharactersInService() {
         val character = CharacterDto("Luke Skywalker", 172, "Tatooine")
@@ -44,6 +43,5 @@ class CharacterControllerTest {
 
         verify(characterService).getCharacters()
     }
-*/
 
 }
