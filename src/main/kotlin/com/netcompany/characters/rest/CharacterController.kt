@@ -2,10 +2,10 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
 
-@Controller
+@RestController
 class CharacterController(val characterService: CharacterService) {
     @GetMapping(path = ["/hello"])
     fun hello() = "Hello, Yoda!"
