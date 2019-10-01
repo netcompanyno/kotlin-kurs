@@ -26,7 +26,7 @@ class CharacterServiceTest {
 
 
     @Test
-    fun getAllCharactersInvokesRepository() {
+    fun getCharactersInvokesRepository() {
         Mockito.`when`(characterRepository.findAll()).thenReturn(emptyList())
 
         characterService.getCharacters()
@@ -35,7 +35,7 @@ class CharacterServiceTest {
     }
 
     @Test
-    fun getAllCharactersConvertsAndReturnsResult() {
+    fun getCharactersConvertsAndReturnsResult() {
         val characterEntities =
             listOf(CharacterEntity("Luke Skywalker", 172, "Tatooine"), CharacterEntity("Yoda", 66, "unknown"))
 
