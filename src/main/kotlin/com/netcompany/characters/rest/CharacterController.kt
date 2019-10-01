@@ -2,13 +2,14 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 /**
  * Controller that handles REST requests regarding characters.
  */
-@RestController
+@Controller
 class CharacterController(private val characterService: CharacterService) {
     @GetMapping(path = ["/characters/{id}"])
     fun getById(@PathVariable("id") id: Int): CharacterDto {
