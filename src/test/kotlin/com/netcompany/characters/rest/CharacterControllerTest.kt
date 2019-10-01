@@ -2,8 +2,8 @@ package com.netcompany.characters.rest
 
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
-import junit.framework.Assert.assertNotNull
-import junit.framework.Assert.assertSame
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertSame
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
