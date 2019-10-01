@@ -34,12 +34,15 @@ class CharacterIT {
 
     @Test
     @Throws(Exception::class)
-    fun getCharacterReturnsExistingCharacter() {
+    fun getCharactersReturnsCharacters() {
         mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.length()", `is`(1)))
+            .andExpect(jsonPath("$.length()", `is`(2)))
             .andExpect(jsonPath("$[0].name", notNullValue()))
             .andExpect(jsonPath("$[0].height", notNullValue()))
             .andExpect(jsonPath("$[0].homeworld", notNullValue()))
+            .andExpect(jsonPath("$[1].name", notNullValue()))
+            .andExpect(jsonPath("$[1].height", notNullValue()))
+            .andExpect(jsonPath("$[1].homeworld", notNullValue()))
     }
 }

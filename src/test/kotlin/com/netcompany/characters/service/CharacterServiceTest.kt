@@ -1,5 +1,6 @@
 package com.netcompany.characters.service
 
+import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.repository.CharacterRepository
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,7 +38,7 @@ class CharacterServiceTest {
     @Test
     fun getAllCharactersConvertsAndReturnsResult() {
         val characterEntities =
-            listOf(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine"), CharacterEntity(2, "Yoda", 66, "unknown"))
+            listOf(CharacterEntity("Luke Skywalker", 172, "Tatooine"), CharacterEntity("Yoda", 66, "unknown"))
 
         Mockito.`when`(characterRepository.findAll()).thenReturn(characterEntities)
 
@@ -52,6 +53,6 @@ class CharacterServiceTest {
         assertEquals("Yoda", characterDtos[1].name)
         assertEquals(66, characterDtos[1].height)
     }
-
 */
+
 }
