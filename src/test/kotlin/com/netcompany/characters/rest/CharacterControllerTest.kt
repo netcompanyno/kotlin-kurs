@@ -13,12 +13,6 @@ import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import kotlin.test.assertEquals
 
-/**
- * Oppgave 3
- *
- * Denne testen er kommentert ut fordi koden i utgangspunktet ikke vil kompilere. Når du har gjort oppgaven kan du
- * kommentere inn testen igjen og kjøre den.
- */
 @RunWith(MockitoJUnitRunner::class)
 class CharacterControllerTest {
 
