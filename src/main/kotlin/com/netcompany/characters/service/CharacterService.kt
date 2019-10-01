@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service
  * Siden vi foreløpig kun har laget en metode for å hente ut data fra databasen vil det i utgangspunktet ikke finnes
  * noe data der. Vi har derimot satt opp et script som setter inn noen characters i databasen slik at man har noe å
  * hente ut.
+ *
+ * Når du er ferdig kan du kjøre testene og se om du har løst oppgaven riktig.
  */
 @Service
 class CharacterService {
