@@ -24,7 +24,6 @@ class CharacterServiceTest {
     @Mock
     lateinit var characterRepository: CharacterRepository
 
-/*
 
     @Test
     fun getAllCharactersInvokesRepository() {
@@ -53,6 +52,5 @@ class CharacterServiceTest {
         assertEquals("Yoda", characterDtos[1].name)
         assertEquals(66, characterDtos[1].height)
     }
-*/
 
 }
