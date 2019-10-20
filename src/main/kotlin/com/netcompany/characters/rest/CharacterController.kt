@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
- * Opgpave 5
+ * Oppgave 5
  *
  * Lag et endepunkt for å opprette karakterer. Dette skal ta imot en karakter, som skal sendes gjennom servicelaget
  * og lagres i databasen. Endepunktet skal retunere den nylig opprettede karakteren.
