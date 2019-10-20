@@ -51,7 +51,7 @@ class CharacterServiceTest {
 
     @Test
     fun createCharacterInvokesRepository() {
-        val characterDto = CharacterDto("Luke Skywalker", 172, "Tattooine")
+        val characterDto = CharacterDto(null, "Luke Skywalker", 172, "Tattooine")
 
        `when`(characterRepository.save(any(CharacterEntity::class.java)))
            .thenReturn(CharacterEntity("Luke Skywalker", 172, "Tattooine"))
@@ -68,7 +68,7 @@ class CharacterServiceTest {
         `when`(characterRepository.save(any(CharacterEntity::class.java)))
             .thenReturn(characterEntity)
 
-        val createdCharacterDto = characterService.createCharacter(CharacterDto("Luke Skywalker", 172, "Tattooine"))
+        val createdCharacterDto = characterService.createCharacter(CharacterDto(null, "Luke Skywalker", 172, "Tattooine"))
 
 
         assertEquals(characterEntity.name, createdCharacterDto.name)

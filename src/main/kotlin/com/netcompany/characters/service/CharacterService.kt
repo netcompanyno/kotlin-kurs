@@ -29,6 +29,20 @@ class CharacterService(val characterRepository: CharacterRepository) {
     }
 
     /**
+     * Gets the character with the given id.
+     *
+     * @param id id of the character to be retrieved
+     * @return the character with the given id
+     * @throws CharacterNotFoundException if no character with given id exists
+     */
+    fun getById(id: Int): CharacterDto {
+        val characterEntity: CharacterEntity = characterRepository.findByIdOrNull(id)
+            ?: throw CharacterNotFoundException("Character with id $id not found")
+
+        return CharacterDto(characterEntity)
+    }
+
+    /**
      * Creates a character.
      *
      * @param characterDto dto representing the character

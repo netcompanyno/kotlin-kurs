@@ -23,6 +23,11 @@ class CharacterController(val characterService: CharacterService) {
         return characterService.getCharacters()
     }
 
+    @GetMapping(path = ["/characters/{id}"])
+    fun getById(@PathVariable("id") id: Int): CharacterDto {
+        return characterService.getById(id)
+    }
+
     @PostMapping(path = ["/characters"])
     fun createCharacter(@RequestBody characterDto: CharacterDto): CharacterDto {
         return characterService.createCharacter(characterDto)

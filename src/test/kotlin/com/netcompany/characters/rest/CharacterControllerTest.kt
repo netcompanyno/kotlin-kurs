@@ -25,7 +25,7 @@ class CharacterControllerTest {
 
     @Test
     fun getCharactersCallsGetCharactersInService() {
-        val character = CharacterDto("Luke Skywalker", 172, "Tatooine")
+        val character = CharacterDto(null, "Luke Skywalker", 172, "Tatooine")
 
         `when`(characterService.getCharacters()).thenReturn(listOf(character))
 
@@ -40,7 +40,7 @@ class CharacterControllerTest {
 
     @Test
     fun createCharacterCallsCreateCharacterInService() {
-        val character = CharacterDto("Luke Skywalker", 172, "Tatooine")
+        val character = CharacterDto(null, "Luke Skywalker", 172, "Tatooine")
 
         characterController.createCharacter(character)
 
