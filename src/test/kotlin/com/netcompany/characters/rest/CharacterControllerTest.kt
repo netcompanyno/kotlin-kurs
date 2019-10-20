@@ -22,10 +22,11 @@ class CharacterControllerTest {
     @Mock
     lateinit var characterService: CharacterService
 
+/*
 
     @Test
     fun getCharactersCallsGetCharactersInService() {
-        val character = CharacterDto(null, "Luke Skywalker", 172, "Tatooine")
+        val character = CharacterDto(1, "Luke Skywalker", 172, "Tatooine")
 
         `when`(characterService.getCharacters()).thenReturn(listOf(character))
 
@@ -46,4 +47,20 @@ class CharacterControllerTest {
 
         verify(characterService).createCharacter(character)
     }
+
+    @Test
+    fun getByIdCallsServiceAndReturnsResult() {
+        val expected = CharacterDto(1, "Luke Skywalker", 172, "Tatooine")
+
+        `when`(characterService.getById(1)).thenReturn(expected)
+
+        val result = characterController.getById(1)
+
+        assertNotNull(result)
+        assertSame(expected, result)
+
+        verify(characterService).getById(1)
+    }
+
+*/
 }

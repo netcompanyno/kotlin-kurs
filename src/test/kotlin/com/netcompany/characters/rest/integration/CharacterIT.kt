@@ -1,6 +1,8 @@
 package com.netcompany.characters.rest.integration
 
 import com.netcompany.characters.Application
+import com.netcompany.characters.domain.CharacterEntity
+import org.hamcrest.Matchers
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.notNullValue
 import org.junit.Test
@@ -64,4 +66,24 @@ class CharacterIT {
             .andExpect(jsonPath("$[2].homeworld", `is`("Kashyyyk")))
             .andExpect(jsonPath("$[2].height", `is`(228)))
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun getCharacterByIdReturnsExistingCharacter() {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/1").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.id", `is`(1)))
+            .andExpect(jsonPath("$.name", `is`("Yoda")))
+            .andExpect(jsonPath("$.height", `is`(66)))
+            .andExpect(jsonPath("$.homeworld", `is`("unknown")))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun getCharacterByIdReturnsNotFoundOnNonExistingCharacter() {
+        mvc.perform(MockMvcRequestBuilders.get("/characters/42").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound)
+            .andExpect(status().reason(Matchers.containsString("Could not find character")))
+    }
+
 }
