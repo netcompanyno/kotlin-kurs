@@ -92,7 +92,7 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdConvertsAndReturnsResult() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
+        val characterEntity = CharacterEntity("Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
 
         val retrievedCharacter = characterService.getById(1)
@@ -100,7 +100,7 @@ class CharacterServiceTest {
         assertNotNull(retrievedCharacter)
         assertEquals("Luke Skywalker", retrievedCharacter.name)
         assertEquals(172, retrievedCharacter.height)
-        assertEquals("Tattooine", retrievedCharacter.homeworld)
+        assertEquals("Tatooine", retrievedCharacter.homeworld)
     }
 
     @Test
