@@ -1,3 +1,5 @@
+create sequence hibernate_sequence start with 3 increment by 1;
+
 create table character(
     id int not null,
     name varchar(100) not null,
