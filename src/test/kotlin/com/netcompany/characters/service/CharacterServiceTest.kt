@@ -2,13 +2,16 @@ package com.netcompany.characters.service
 
 import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.dto.CharacterDto
+import com.netcompany.characters.exception.CharacterNotFoundException
 import com.netcompany.characters.repository.CharacterRepository
 import org.junit.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
+import java.util.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
@@ -75,4 +78,38 @@ class CharacterServiceTest {
         assertEquals(characterEntity.homeworld, createdCharacterDto.homeworld)
         assertEquals(characterEntity.height, createdCharacterDto.height)
     }
+
+/*
+    @Test
+    fun getByIdInvokesRepository() {
+        `when`(characterRepository.findById(1))
+            .thenReturn(Optional.of(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")))
+
+        characterService.getById(1)
+
+        verify(characterRepository).findById(1)
+    }
+
+    @Test
+    fun getByIdConvertsAndReturnsResult() {
+        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
+        `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
+
+        val retrievedCharacter = characterService.getById(1)
+
+        assertNotNull(retrievedCharacter)
+        assertEquals(1, retrievedCharacter.id)
+        assertEquals("Luke Skywalker", retrievedCharacter.name)
+        assertEquals(172, retrievedCharacter.height)
+        assertEquals("Tattooine", retrievedCharacter.homeworld)
+    }
+
+    @Test
+    fun getByIdThrowsExceptionWhenElementNotFound() {
+        assertThrows<CharacterNotFoundException>("Character with id 1 not found") {
+            characterService.getById(1)
+        }
+    }
+*/
+
 }
