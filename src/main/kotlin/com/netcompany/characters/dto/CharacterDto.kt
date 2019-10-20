@@ -2,20 +2,21 @@ package com.netcompany.characters.dto
 
 import com.netcompany.characters.api.swapi.dto.PeopleDto
 import com.netcompany.characters.domain.CharacterEntity
-import org.springframework.validation.annotation.Validated
-import javax.validation.constraints.Max
-import javax.validation.constraints.Min
-import javax.validation.constraints.Size
 
 /**
  * Data transfer object representing a character.
  */
-@Validated
 data class CharacterDto(
     var id: Int?,
-    @get: Size(min = 2) var name: String,
-    @get: Min(1) @get: Max(4000) var height: Int,
-    @get: Size(min = 2) var homeworld: String) {
+    var name: String,
+    var height: Int,
+    var homeworld: String) {
+
+    init {
+        require(name.length >= 2) { "Name must have length >= 2!" }
+        require(height in 0..4000) { "Height must be between 0 and 4000!" }
+        require(homeworld.length >= 2) { "Homeworld must have length >= 2!" }
+    }
 
     constructor(entity: CharacterEntity) : this(entity.id, entity.name, entity.height, entity.homeworld)
 
