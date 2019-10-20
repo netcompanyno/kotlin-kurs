@@ -54,7 +54,7 @@ class CharacterServiceTest {
 
     @Test
     fun createCharacterInvokesRepository() {
-        val characterDto = CharacterDto("Luke Skywalker", 172, "Tattooine")
+        val characterDto = CharacterDto(null, "Luke Skywalker", 172, "Tattooine")
 
        `when`(characterRepository.save(any(CharacterEntity::class.java)))
            .thenReturn(CharacterEntity("Luke Skywalker", 172, "Tattooine"))
@@ -71,7 +71,7 @@ class CharacterServiceTest {
         `when`(characterRepository.save(any(CharacterEntity::class.java)))
             .thenReturn(characterEntity)
 
-        val createdCharacterDto = characterService.createCharacter(CharacterDto("Luke Skywalker", 172, "Tattooine"))
+        val createdCharacterDto = characterService.createCharacter(CharacterDto(null, "Luke Skywalker", 172, "Tattooine"))
 
 
         assertEquals(characterEntity.name, createdCharacterDto.name)
@@ -79,11 +79,10 @@ class CharacterServiceTest {
         assertEquals(characterEntity.height, createdCharacterDto.height)
     }
 
-/*
     @Test
     fun getByIdInvokesRepository() {
         `when`(characterRepository.findById(1))
-            .thenReturn(Optional.of(CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")))
+            .thenReturn(Optional.of(CharacterEntity("Luke Skywalker", 172, "Tatooine")))
 
         characterService.getById(1)
 
@@ -92,16 +91,15 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdConvertsAndReturnsResult() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
+        val characterEntity = CharacterEntity("Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
 
         val retrievedCharacter = characterService.getById(1)
 
         assertNotNull(retrievedCharacter)
-        assertEquals(1, retrievedCharacter.id)
         assertEquals("Luke Skywalker", retrievedCharacter.name)
         assertEquals(172, retrievedCharacter.height)
-        assertEquals("Tattooine", retrievedCharacter.homeworld)
+        assertEquals("Tatooine", retrievedCharacter.homeworld)
     }
 
     @Test
@@ -110,6 +108,4 @@ class CharacterServiceTest {
             characterService.getById(1)
         }
     }
-*/
-
 }

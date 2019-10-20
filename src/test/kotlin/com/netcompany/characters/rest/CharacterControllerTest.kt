@@ -22,7 +22,6 @@ class CharacterControllerTest {
     @Mock
     lateinit var characterService: CharacterService
 
-/*
 
     @Test
     fun getCharactersCallsGetCharactersInService() {
@@ -61,6 +60,4 @@ class CharacterControllerTest {
 
         verify(characterService).getById(1)
     }
-
-*/
 }
