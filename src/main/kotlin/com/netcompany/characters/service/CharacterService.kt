@@ -1,5 +1,6 @@
 package com.netcompany.characters.service
 
+import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.repository.CharacterRepository
 import org.springframework.stereotype.Service
@@ -15,5 +16,17 @@ class CharacterService(val characterRepository: CharacterRepository) {
         return characterRepository.findAll()
             .map { c -> CharacterDto(c) }
             .toList()
+    }
+
+    /**
+     * Creates a character.
+     *
+     * @param characterDto dto representing the character
+     * @return dto representing the newly created character
+     */
+    fun createCharacter(characterDto: CharacterDto): CharacterDto {
+        val characterEntity = CharacterEntity(characterDto)
+
+        return CharacterDto(characterRepository.save(characterEntity))
     }
 }
