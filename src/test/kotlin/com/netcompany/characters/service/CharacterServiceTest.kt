@@ -49,7 +49,6 @@ class CharacterServiceTest {
         assertEquals(66, characterDtos[1].height)
     }
 
-/*
     @Test
     fun createCharacterInvokesRepository() {
         val characterDto = CharacterDto("Luke Skywalker", 172, "Tattooine")
@@ -76,5 +75,4 @@ class CharacterServiceTest {
         assertEquals(characterEntity.homeworld, createdCharacterDto.homeworld)
         assertEquals(characterEntity.height, createdCharacterDto.height)
     }
-*/
 }

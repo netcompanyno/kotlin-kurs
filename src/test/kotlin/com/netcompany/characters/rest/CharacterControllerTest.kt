@@ -38,7 +38,6 @@ class CharacterControllerTest {
         verify(characterService).getCharacters()
     }
 
-/*
     @Test
     fun createCharacterCallsCreateCharacterInService() {
         val character = CharacterDto("Luke Skywalker", 172, "Tatooine")
@@ -47,5 +46,4 @@ class CharacterControllerTest {
 
         verify(characterService).createCharacter(character)
     }
-*/
 }
