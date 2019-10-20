@@ -45,4 +45,23 @@ class CharacterIT {
             .andExpect(jsonPath("$[1].height", notNullValue()))
             .andExpect(jsonPath("$[1].homeworld", notNullValue()))
     }
+
+    @Test
+    fun createCharacterCreatesCharacter() {
+        val character = "{\"name\": \"Chewbacca\"," +
+            "\"homeworld\": \"Kashyyyk\"," +
+            "\"height\": 228}"
+
+        mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(MediaType.APPLICATION_JSON).content(character))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.name", `is`("Chewbacca")))
+            .andExpect(jsonPath("$.homeworld", `is`("Kashyyyk")))
+            .andExpect(jsonPath("$.height", `is`(228)))
+
+        mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.length()", `is`(3)))
+            .andExpect(jsonPath("$[2].name", `is`("Chewbacca")))
+            .andExpect(jsonPath("$[2].homeworld", `is`("Kashyyyk")))
+            .andExpect(jsonPath("$[2].height", `is`(228)))
+    }
 }
