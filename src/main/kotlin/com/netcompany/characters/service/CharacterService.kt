@@ -2,9 +2,19 @@ package com.netcompany.characters.service
 
 import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.dto.CharacterDto
+import com.netcompany.characters.exception.CharacterNotFoundException
 import com.netcompany.characters.repository.CharacterRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
+/**
+ * Oppgave 6
+ *
+ * Lag en metode som henter en karakter basert på id.
+ * Hvis karakteren ikke finnes skal det kastes en CharacterNotFoundException.
+ *
+ * Tips: JpaRepository har en metode findByIdOrNull.
+ */
 @Service
 class CharacterService(val characterRepository: CharacterRepository) {
     /**
