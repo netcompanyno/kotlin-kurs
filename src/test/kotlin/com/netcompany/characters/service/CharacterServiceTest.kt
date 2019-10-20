@@ -12,12 +12,6 @@ import org.mockito.junit.MockitoJUnitRunner
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-/**
- * Oppgave 5
- *
- * Når du har gjort oppgave 5 kan du kommentere inn testene her for å se om den er løst riktig.
- */
-
 @RunWith(MockitoJUnitRunner::class)
 class CharacterServiceTest {
     @InjectMocks
