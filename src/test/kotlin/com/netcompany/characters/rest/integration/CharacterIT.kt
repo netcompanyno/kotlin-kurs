@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -27,7 +29,7 @@ class CharacterIT {
 
     @Test
     fun helloReturnsHelloString() {
-        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/hello").accept(APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$", `is`("Hello, Yoda!")))
     }
@@ -35,7 +37,7 @@ class CharacterIT {
     @Test
     @Throws(Exception::class)
     fun getCharactersReturnsCharacters() {
-        mvc.perform(MockMvcRequestBuilders.get("/characters").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/characters").accept(APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.length()", `is`(2)))
             .andExpect(jsonPath("$[0].name", notNullValue()))
