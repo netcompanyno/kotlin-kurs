@@ -71,7 +71,7 @@ class CharacterIT {
 
     @Test
     fun createCharacterWithEmptyNameReturnsBadRequest() {
-        val character = "{\"name\": \"Chewbacca\"," +
+        val character = "{\"name\": \"\"," +
             "\"homeworld\": \"Kashyyyk\"," +
             "\"height\": 228}"
 
@@ -84,7 +84,7 @@ class CharacterIT {
     fun createCharacterWithNegativeHeightReturnsBadRequest() {
         val character = "{\"name\": \"Chewbacca\"," +
             "\"homeworld\": \"Kashyyyk\"," +
-            "\"height\": 228}"
+            "\"height\": -100}"
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
@@ -94,7 +94,7 @@ class CharacterIT {
     @Test
     fun createCharacterWithEmptyHomeworldReturnsBadRequest() {
         val character = "{\"name\": \"Chewbacca\"," +
-            "\"homeworld\": \"Kashyyyk\"," +
+            "\"homeworld\": \"\"," +
             "\"height\": 228}"
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
