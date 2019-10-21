@@ -68,6 +68,39 @@ class CharacterIT {
     }
 
     @Test
+    fun createCharacterWithEmptyNameReturnsBadRequest() {
+        val character = "{\"name\": \"Chewbacca\"," +
+            "\"homeworld\": \"Kashyyyk\"," +
+            "\"height\": 228}"
+
+        mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(MediaType.APPLICATION_JSON).content(character))
+            .andExpect(status().isBadRequest)
+            .andExpect(jsonPath("$", `is`("")))
+    }
+
+    @Test
+    fun createCharacterWithNegativeHeightReturnsBadRequest() {
+        val character = "{\"name\": \"Chewbacca\"," +
+            "\"homeworld\": \"Kashyyyk\"," +
+            "\"height\": 228}"
+
+        mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(MediaType.APPLICATION_JSON).content(character))
+            .andExpect(status().isBadRequest)
+            .andExpect(jsonPath("$", `is`("")))
+    }
+
+    @Test
+    fun createCharacterWithEmptyHomeworldReturnsBadRequest() {
+        val character = "{\"name\": \"Chewbacca\"," +
+            "\"homeworld\": \"Kashyyyk\"," +
+            "\"height\": 228}"
+
+        mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(MediaType.APPLICATION_JSON).content(character))
+            .andExpect(status().isBadRequest)
+            .andExpect(jsonPath("$", `is`("")))
+    }
+
+    @Test
     @Throws(Exception::class)
     fun getCharacterByIdReturnsExistingCharacter() {
         mvc.perform(MockMvcRequestBuilders.get("/characters/1").accept(MediaType.APPLICATION_JSON))
