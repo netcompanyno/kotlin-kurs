@@ -4,15 +4,6 @@ import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
 import org.springframework.web.bind.annotation.*
 
-/**
- * Oppgave 6
- *
- * Lag et endepunkt som henter karakter basert på id. Merk at vi foreløpig kun har feltet id i CharacterEntity, men
- * siden vi nå skal bruke det i kall som gjøres utenfra, trenger vi å legge det til også i CharacterDto.
- *
- * Når du har løst oppgaven skal man fra frontend kunne hente ut en eksisterende karakter basert på id.
- * Du kan også kjøre testene.
- */
 @RestController
 class CharacterController(val characterService: CharacterService) {
     @GetMapping(path = ["/hello"])
