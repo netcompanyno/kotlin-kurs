@@ -55,10 +55,10 @@ class CharacterServiceTest {
 /*
     @Test
     fun createCharacterInvokesRepository() {
-        val characterDto = CharacterDto(null, "Luke Skywalker", 172, "Tattooine")
+        val characterDto = CharacterDto(null, "Luke Skywalker", 172, "Tatooine")
 
        `when`(characterRepository.save(any(CharacterEntity::class.java)))
-           .thenReturn(CharacterEntity("Luke Skywalker", 172, "Tattooine"))
+           .thenReturn(CharacterEntity("Luke Skywalker", 172, "Tatooine"))
 
         characterService.createCharacter(characterDto)
 
@@ -68,11 +68,11 @@ class CharacterServiceTest {
     @Test
     fun createCharacterReturnsCreatedCharacter() {
 
-        val characterEntity = CharacterEntity("Luke Skywalker", 172, "Tattooine")
+        val characterEntity = CharacterEntity("Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.save(any(CharacterEntity::class.java)))
             .thenReturn(characterEntity)
 
-        val createdCharacterDto = characterService.createCharacter(CharacterDto(null, "Luke Skywalker", 172, "Tattooine"))
+        val createdCharacterDto = characterService.createCharacter(CharacterDto(null, "Luke Skywalker", 172, "Tatooine"))
 
 
         assertEquals(characterEntity.name, createdCharacterDto.name)
@@ -92,7 +92,7 @@ class CharacterServiceTest {
 
     @Test
     fun getByIdConvertsAndReturnsResult() {
-        val characterEntity = CharacterEntity(1, "Luke Skywalker", 172, "Tatooine")
+        val characterEntity = CharacterEntity("Luke Skywalker", 172, "Tatooine")
         `when`(characterRepository.findById(1)).thenReturn(Optional.of(characterEntity))
 
         val retrievedCharacter = characterService.getById(1)
@@ -100,7 +100,7 @@ class CharacterServiceTest {
         assertNotNull(retrievedCharacter)
         assertEquals("Luke Skywalker", retrievedCharacter.name)
         assertEquals(172, retrievedCharacter.height)
-        assertEquals("Tattooine", retrievedCharacter.homeworld)
+        assertEquals("Tatooine", retrievedCharacter.homeworld)
     }
 
     @Test
