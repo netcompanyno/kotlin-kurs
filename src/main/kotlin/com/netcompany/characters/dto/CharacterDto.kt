@@ -13,9 +13,9 @@ import javax.validation.constraints.Size
 @Validated
 data class CharacterDto(
     var id: Int?,
-    @get: Size(min = 2) var name: String,
-    @get: Min(1) @get: Max(4000) var height: Int,
-    @get: Size(min = 2) var homeworld: String) {
+    @get: Size(min = 2) val name: String,
+    @get: Min(1) @get: Max(4000) val height: Int,
+    @get: Size(min = 2) val homeworld: String) {
 
     constructor(entity: CharacterEntity) : this(entity.id, entity.name, entity.height, entity.homeworld)
 

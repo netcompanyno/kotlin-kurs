@@ -8,27 +8,21 @@ import org.springframework.stereotype.Service
 class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
 
     fun getAllCharacters(): List<CharacterDto> {
-        val characters = starWarsApiClient.getAllPeople()
+        return starWarsApiClient.getAllPeople()
             .results
-            .map { CharacterDto(it) }
-
-        characters.forEach { updateHomeworld(it) }
-
-        return characters
+            .map(::CharacterDto)
+            .map(this::updateHomeworld)
     }
 
     fun getCharactersByName(name: String): List<CharacterDto> {
-        val characters = starWarsApiClient.getPeopleByName(name)
+        return starWarsApiClient.getPeopleByName(name)
             .results
-            .map { CharacterDto(it) }
-
-        characters.forEach { updateHomeworld(it) }
-
-        return characters
+            .map(::CharacterDto)
+            .map(this::updateHomeworld)
     }
 
-    private fun updateHomeworld(characterDto: CharacterDto) {
+    private fun updateHomeworld(characterDto: CharacterDto): CharacterDto {
         val planetId = characterDto.homeworld.split("/").dropLast(1).last()
-        characterDto.homeworld = starWarsApiClient.getPlanet(planetId).name
+        return characterDto.copy(homeworld = starWarsApiClient.getPlanet(planetId).name)
     }
 }
