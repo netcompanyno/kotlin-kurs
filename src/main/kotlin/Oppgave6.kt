@@ -25,6 +25,8 @@
  * Testene i Oppgave6Test vil kjøre grønt når funksjonen er implementert riktig.
  */
 
+// Løsningsforslag oppgave 6
+
 enum class Reason {
     WrongPassword,
     TooManyTries
@@ -43,5 +45,20 @@ data class Error(val reason: Reason) : Action()
 data class Success(val userdata: String) : Action()
 object Logout : Action()
 
-
-fun State.nextState(action: Action): State = TODO("Skriv denne funksjonen etter kravene i beskrivelsen.")
+fun State.nextState(action: Action): State = when (this) {
+    is LoggedOut -> when (action) {
+        is Submit ->
+            if (attempts >= 5) LoggedOut(attempts + 1, Reason.TooManyTries)
+            else Loading(attempts)
+        else -> throw IllegalStateException()
+    }
+    is Loading -> when (action) {
+        is Error -> LoggedOut(attempts + 1, action.reason)
+        is Success -> LoggedIn(action.userdata)
+        else -> throw IllegalStateException()
+    }
+    is LoggedIn -> when (action) {
+        is Logout -> LoggedOut()
+        else -> throw IllegalStateException()
+    }
+}
