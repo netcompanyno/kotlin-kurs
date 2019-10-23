@@ -14,6 +14,7 @@
 
 // Løsningsforslag oppgave 2
 
+/*
 fun handleRemoteCall(id: Int?): Response {
     if (id == null) {
         return Response(404)
@@ -41,4 +42,4 @@ fun callRemoteAPI(id: Int): Response? {
         id % 3 == 1 -> Response(500)
         else -> null
     }
-}
+}*/

@@ -1,10 +1,10 @@
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class Oppgave2Test {
+class Oppgave5Test {
 
-/*    @Test
+    @Test
     fun `Dersom id er null, returner en respons med status 404`() {
         val response = handleRemoteCall(null)
         assertEquals(Response(404), response)
@@ -35,6 +35,5 @@ class Oppgave2Test {
     fun `Ellers, returner responsen fra callRemoteAPI`() {
         val response = handleRemoteCall(3)
         assertEquals(Response(200), response)
-    }*/
-
+    }
 }
