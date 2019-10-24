@@ -16,12 +16,11 @@
  * gi bedre lesbarhet.
  */
 
+// Løsningsforslag oppgave 5
+
 fun handleRemoteAPI(id: Int?): Response {
-
-    val response = id?.let(::callRemoteAPI) ?: return Response(404)
-
-    response.status.takeUnless { it == 500 } ?: throw RuntimeException()
-    return response
+    val response = id?.let(::callRemoteAPI) ?: Response(404)
+    return response.takeUnless { it.status == 500 } ?: throw Exception()
 }
 
 
