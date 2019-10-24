@@ -2,7 +2,7 @@
  * Oppgave 6
  *
  * Sealed classes er et kraftig verktøy som kan brukes til mye.
- * I presentasjonen så vi at man kan brukte sealed classes til å lage et lite "språk"
+ * I presentasjonen så vi at man kan bruke sealed classes til å lage et lite "språk"
  * som ble evaluert i en "Expression.evaluate" funksjon.
  *
  * I denne oppgaven skal vi bruke sealed classes til å modellere en tilstandsmaskin.
