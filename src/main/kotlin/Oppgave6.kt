@@ -27,24 +27,6 @@
 
 // Løsningsforslag oppgave 6
 
-enum class Reason {
-    WrongPassword,
-    TooManyTries
-}
-
-sealed class State
-
-data class LoggedOut(val attempts: Int = 0, val reason: Reason? = null) : State()
-data class Loading(val attempts: Int) : State()
-data class LoggedIn(val userdata: String) : State()
-
-sealed class Action
-
-data class Submit(val username: String, val password: String) : Action()
-data class Error(val reason: Reason) : Action()
-data class Success(val userdata: String) : Action()
-object Logout : Action()
-
 fun State.nextState(action: Action): State = when (this) {
     is LoggedOut -> when (action) {
         is Submit ->
@@ -62,3 +44,23 @@ fun State.nextState(action: Action): State = when (this) {
         else -> throw IllegalStateException()
     }
 }
+
+
+// --- Ikke endre noe nedenfor denne linjen ---
+enum class Reason {
+    WrongPassword,
+    TooManyTries
+}
+
+sealed class State
+
+data class LoggedOut(val attempts: Int = 0, val reason: Reason? = null) : State()
+data class Loading(val attempts: Int) : State()
+data class LoggedIn(val userdata: String) : State()
+
+sealed class Action
+
+data class Submit(val username: String, val password: String) : Action()
+data class Error(val reason: Reason) : Action()
+data class Success(val userdata: String) : Action()
+object Logout : Action()
