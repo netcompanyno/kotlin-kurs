@@ -12,9 +12,10 @@
  *
  */
 
-fun handleRemoteCall(id: Int?): Response = TODO()
+fun handleRemoteAPI(id: Int?): Response = TODO()
 
 
+/*
 // -------------- Ikke endre dette --------------
 data class Response(val status: Int)
 
@@ -27,3 +28,4 @@ fun callRemoteAPI(id: Int): Response? {
         else -> null
     }
 }
+*/
