@@ -25,6 +25,10 @@
  * Testene i Oppgave6Test vil kjøre grønt når funksjonen er implementert riktig.
  */
 
+fun State.nextState(action: Action): State = TODO("Skriv denne funksjonen etter kravene i beskrivelsen.")
+
+
+// --- Ikke endre noe nedenfor denne linjen ---
 enum class Reason {
     WrongPassword,
     TooManyTries
@@ -42,6 +46,3 @@ data class Submit(val username: String, val password: String) : Action()
 data class Error(val reason: Reason) : Action()
 data class Success(val userdata: String) : Action()
 object Logout : Action()
-
-
-fun State.nextState(action: Action): State = TODO("Skriv denne funksjonen etter kravene i beskrivelsen.")
