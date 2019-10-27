@@ -12,10 +12,10 @@ import com.netcompany.characters.domain.CharacterEntity
  * Du kan også kjøre testene i CharacterIT.
  */
 data class CharacterDto(
-    var id: Int?,
-    var name: String,
-    var height: Int,
-    var homeworld: String) {
+    val id: Int?,
+    val name: String,
+    val height: Int,
+    val homeworld: String) {
 
     constructor(entity: CharacterEntity) : this(entity.id, entity.name, entity.height, entity.homeworld)
 }
