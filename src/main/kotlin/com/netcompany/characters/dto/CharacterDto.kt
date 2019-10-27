@@ -1,5 +1,6 @@
 package com.netcompany.characters.dto
 
+import com.netcompany.characters.api.swapi.dto.PeopleDto
 import com.netcompany.characters.domain.CharacterEntity
 
 data class CharacterDto(
@@ -15,4 +16,6 @@ data class CharacterDto(
     }
 
     constructor(entity: CharacterEntity) : this(entity.id, entity.name, entity.height, entity.homeworld)
+
+    constructor(peopleDto: PeopleDto) : this(null, peopleDto.name, peopleDto.height.toInt(), peopleDto.homeworld)
 }
