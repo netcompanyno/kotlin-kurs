@@ -99,14 +99,14 @@ class CharacterIT {
     }
 
     @Test
-    fun getCharacterFromStarWarsApiByNameReturnsCharacter() {
+    fun getCharacterFromStarWarsApiByNameReturnsMultipleCharacters() {
         mvc.perform(MockMvcRequestBuilders.get("/swapi/characters?name=Skywalker").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.length()", `is`(3)))
     }
 
     @Test
-    fun getCharacterFromStarWarsApiByNameReturnsMultipleCharacters() {
+    fun getCharacterFromStarWarsApiByNameReturnsCharacter() {
         mvc.perform(MockMvcRequestBuilders.get("/swapi/characters?name=Yoda").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.length()", `is`(1)))
