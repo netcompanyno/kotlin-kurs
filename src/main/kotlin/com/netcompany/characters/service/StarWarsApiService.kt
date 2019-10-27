@@ -17,7 +17,7 @@ class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
     fun getCharactersByName(name: String): List<CharacterDto> {
         return starWarsApiClient.getPeopleByName(name)
                 .results
-                .map(this::updateHomeworld)
+                .map(::updateHomeworld)
     }
 
     private fun updateHomeworld(peopleDto: PeopleDto): CharacterDto {
