@@ -20,10 +20,14 @@ class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
         return starWarsApiClient.getAllPeople()
             .results
             .map(::CharacterDto)
+            .map(::updateHomeworld)
     }
 
-    fun updateHomeworld(characterDto: CharacterDto) {
+    fun updateHomeworld(characterDto: CharacterDto) : CharacterDto {
         val planetId = characterDto.homeworld.split("/").dropLast(1).last()
 
+        val homeworld = starWarsApiClient.getPlanet(planetId).name
+
+        return characterDto.copy(homeworld = homeworld)
     }
 }
