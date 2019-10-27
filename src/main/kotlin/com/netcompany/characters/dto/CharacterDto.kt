@@ -3,10 +3,10 @@ package com.netcompany.characters.dto
 import com.netcompany.characters.domain.CharacterEntity
 
 data class CharacterDto(
-    var id: Int?,
-    var name: String,
-    var height: Int,
-    var homeworld: String) {
+    val id: Int?,
+    val name: String,
+    val height: Int,
+    val homeworld: String) {
 
     init {
         require(name.length >= 2) { "Name must have length >= 2!" }
