@@ -10,7 +10,7 @@ data class CharacterDto(
 
     init {
         require(name.length >= 2) { "Name must have length >= 2!" }
-        require(height in 0..4000) { "Height must be between 0 and 4000!" }
+        require(height in 1..4000) { "Height must be between 0 and 4000!" }
         require(homeworld.length >= 2) { "Homeworld must have length >= 2!" }
     }
 
