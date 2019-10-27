@@ -5,4 +5,4 @@ package com.netcompany.characters.dto
  *
  * Legg til en konstruktør som tar inn en CharacterEntity.
  */
-data class CharacterDto(var name: String, var height: Int, var homeworld: String)
+data class CharacterDto(val name: String, val height: Int, val homeworld: String)
