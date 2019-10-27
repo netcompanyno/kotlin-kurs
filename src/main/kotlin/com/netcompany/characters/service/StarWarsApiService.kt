@@ -5,9 +5,13 @@ import com.netcompany.characters.dto.CharacterDto
 import org.springframework.stereotype.Service
 
 /**
- * Oppgave 8
+ * Oppgave 9
  *
- * Returner en liste med alle karakterene ved å kalle metoden i StarWarsApiClient.
+ * Vi har nå integrert tjenesten vår med SWAPI, men det er fortsatt en ting som ikke er optimal.
+ * Hvis man ser på det som per nå returneres, vil man se at det for homeworld vises en link. Vi ønsker å hente ut selve
+ * planeten fra SWAPI i stedet, og vise navnet fra denne.
+ *
+ * Implementer dette her.
  */
 @Service
 class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
@@ -16,5 +20,10 @@ class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
         return starWarsApiClient.getAllPeople()
             .results
             .map(::CharacterDto)
+    }
+
+    fun updateHomeworld(characterDto: CharacterDto) {
+        val planetId = characterDto.homeworld.split("/").dropLast(1).last()
+
     }
 }

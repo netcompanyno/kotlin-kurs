@@ -7,12 +7,6 @@ import com.netcompany.characters.repository.CharacterRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
-/**
- * Oppgave 8
- *
- * Fullfør metoden for å hente alle characters fra Star Wars API. Denne skal kalle tilsvarende metode i
- * StarWarsApiService.
- */
 @Service
 class CharacterService(val characterRepository: CharacterRepository, val starWarsApiService: StarWarsApiService) {
     /**

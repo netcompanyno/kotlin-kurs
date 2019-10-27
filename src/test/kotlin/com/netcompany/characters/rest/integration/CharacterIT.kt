@@ -125,4 +125,12 @@ class CharacterIT {
             // First page returns 10 characters by default.
             .andExpect(jsonPath("$.length()", `is`(10)))
     }
+
+    @Test
+    fun getAllCharactersFromStarWarsApiMapsHomeworld() {
+        mvc.perform(get("/swapi/characters").accept(APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$[0].homeworld", not(containsString("https"))))
+            .andExpect(jsonPath("$[0].homeworld", not(containsString("/"))))
+    }
 }

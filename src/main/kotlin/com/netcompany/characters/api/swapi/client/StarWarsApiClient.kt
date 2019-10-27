@@ -5,6 +5,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.kittinunf.fuel.httpGet
 import com.netcompany.characters.api.swapi.dto.PeopleResultDto
+import com.netcompany.characters.api.swapi.dto.PlanetDto
 import org.springframework.stereotype.Service
 
 @Service
@@ -14,6 +15,12 @@ class StarWarsApiClient {
 
     fun getAllPeople(): PeopleResultDto {
         val responseBody = makeGetRequest("$BASE_URL/people?format=json")
+
+        return mapper.readValue(responseBody)
+    }
+
+    fun getPlanet(planetId: String): PlanetDto {
+        val responseBody = makeGetRequest("$BASE_URL/planets/$planetId?format=json")
 
         return mapper.readValue(responseBody)
     }
