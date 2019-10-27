@@ -1,16 +1,12 @@
 package com.netcompany.characters.rest.integration
 
 import com.netcompany.characters.Application
-import com.netcompany.characters.domain.CharacterEntity
-import org.hamcrest.Matchers
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.notNullValue
+import org.hamcrest.Matchers.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.MediaType
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit4.SpringRunner
@@ -77,7 +73,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", `is`("")))
+            .andExpect(jsonPath("$", containsString("Type definition error")))
     }
 
     @Test
@@ -88,7 +84,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", `is`("")))
+            .andExpect(jsonPath("$", containsString("Type definition error")))
     }
 
     @Test
@@ -99,7 +95,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", `is`("")))
+            .andExpect(jsonPath("$", containsString("Type definition error")))
     }
 
     @Test
@@ -118,7 +114,7 @@ class CharacterIT {
     fun getCharacterByIdReturnsNotFoundOnNonExistingCharacter() {
         mvc.perform(get("/characters/42").accept(APPLICATION_JSON))
             .andExpect(status().isNotFound)
-            .andExpect(status().reason(Matchers.containsString("Could not find character")))
+            .andExpect(status().reason(containsString("Could not find character")))
     }
 
 }

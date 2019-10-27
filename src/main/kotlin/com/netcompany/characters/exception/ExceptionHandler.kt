@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class ExceptionHandler : ResponseEntityExceptionHandler() {
     @ExceptionHandler(value = [Exception::class])
     fun handleException(exception: Exception): ResponseEntity<String> {
+        if (exception is CharacterNotFoundException) {
+            throw exception
+        }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.message)
     }
 
