@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
  * StarWarsApiService.
  */
 @Service
-class CharacterService(val characterRepository: CharacterRepository) {
+class CharacterService(val characterRepository: CharacterRepository, val starWarsApiService: StarWarsApiService) {
     /**
      * Gets all the characters.
      *
@@ -52,7 +52,12 @@ class CharacterService(val characterRepository: CharacterRepository) {
         return CharacterDto(characterRepository.save(characterEntity))
     }
 
+    /**
+     * Get all characters from the Star Wars API.
+     *
+     * @return a list of characters
+     */
     fun getCharactersFromStarWarsApi(): List<CharacterDto> {
-        TODO()
+        return starWarsApiService.getAllCharacters()
     }
 }

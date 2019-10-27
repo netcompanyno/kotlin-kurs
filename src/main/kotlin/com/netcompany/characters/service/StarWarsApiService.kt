@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service
 class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {
 
     fun getAllCharacters(): List<CharacterDto> {
-        TODO()
+        return starWarsApiClient.getAllPeople()
+            .results
+            .map(::CharacterDto)
     }
 }
