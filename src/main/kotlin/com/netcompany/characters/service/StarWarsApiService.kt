@@ -5,13 +5,9 @@ import com.netcompany.characters.dto.CharacterDto
 import org.springframework.stereotype.Service
 
 /**
- * Oppgave 9
+ * Oppgave 10
  *
- * Vi har nå integrert tjenesten vår med SWAPI, men det er fortsatt en ting som ikke er optimal.
- * Hvis man ser på det som per nå returneres, vil man se at det for homeworld vises en link. Vi ønsker å hente ut selve
- * planeten fra SWAPI i stedet, og vise navnet fra denne.
- *
- * Implementer dette her.
+ * Legg til en metode som henter karakterer basert på navn, og la denne kalle tilhørende metode i StarWarsApiClient.
  */
 @Service
 class StarWarsApiService(private val starWarsApiClient: StarWarsApiClient) {

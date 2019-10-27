@@ -7,6 +7,11 @@ import com.netcompany.characters.repository.CharacterRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
+/**
+ * Oppgave 10
+ *
+ * Legg til en metode for å hente karakterer fra SWAPI basert på navn.
+ */
 @Service
 class CharacterService(val characterRepository: CharacterRepository, val starWarsApiService: StarWarsApiService) {
     /**

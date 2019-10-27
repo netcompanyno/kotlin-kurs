@@ -133,4 +133,25 @@ class CharacterIT {
             .andExpect(jsonPath("$[0].homeworld", not(containsString("https"))))
             .andExpect(jsonPath("$[0].homeworld", not(containsString("/"))))
     }
+
+    @Test
+    fun getCharacterFromStarWarsApiByNameReturnsMultipleCharacters() {
+        mvc.perform(get("/swapi/characters?name=Skywalker").accept(APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.length()", `is`(3)))
+    }
+
+    @Test
+    fun getCharacterFromStarWarsApiByNameReturnsCharacter() {
+        mvc.perform(get("/swapi/characters?name=Yoda").accept(APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.length()", `is`(1)))
+    }
+
+    @Test
+    fun getCharacterFromStarWarsApiByNameReturnsEmptyListWhenCharacterIsNotFound() {
+        mvc.perform(get("/swapi/characters?name=Data").accept(APPLICATION_JSON))
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.length()", `is`(0)))
+    }
 }

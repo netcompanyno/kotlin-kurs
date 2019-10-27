@@ -19,6 +19,12 @@ class StarWarsApiClient {
         return mapper.readValue(responseBody)
     }
 
+    fun getPeopleByName(name: String): PeopleResultDto {
+        val responseBody = makeGetRequest("$BASE_URL/people?search=$name&format=json")
+
+        return mapper.readValue(responseBody)
+    }
+
     fun getPlanet(planetId: String): PlanetDto {
         val responseBody = makeGetRequest("$BASE_URL/planets/$planetId?format=json")
 

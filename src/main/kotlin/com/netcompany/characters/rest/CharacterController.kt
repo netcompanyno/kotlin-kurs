@@ -4,6 +4,14 @@ import com.netcompany.characters.dto.CharacterDto
 import com.netcompany.characters.service.CharacterService
 import org.springframework.web.bind.annotation.*
 
+/**
+ * Oppgave 10
+ *
+ * Vi ønsker nå å implementere et enkelt søk i karakterene som hentes fra SWAPI. Utvid endepunktet GET /swapi/characters
+ * til å ta inn en optional parameter name. Kall riktig metode i CharacterService basert på om denne er null eller ikke.
+ *
+ * Når du har implementert endepunktet ferdig kan du kjøre CharacterIT.
+ */
 @RestController
 class CharacterController(val characterService: CharacterService) {
     @GetMapping(path = ["/hello"])
