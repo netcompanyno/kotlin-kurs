@@ -5,12 +5,10 @@ import com.netcompany.characters.service.CharacterService
 import org.springframework.web.bind.annotation.*
 
 /**
- * Oppgave 10
+ * Oppgave 11
  *
- * Vi ønsker nå å implementere et enkelt søk i karakterene som hentes fra SWAPI. Utvid endepunktet GET /swapi/characters
- * til å ta inn en optional parameter name. Kall riktig metode i CharacterService basert på om denne er null eller ikke.
- *
- * Når du har implementert endepunktet ferdig kan du kjøre CharacterIT.
+ * Oppgave 10 var siste Spring Boot-oppgave! Hvis du er ferdig og har mer tid igjen, finnes det nye Kotlin-oppgaver i
+ * branchene kotlin-oppgave-5, kotlin-oppgave-6 og kotlin-oppgave-7.
  */
 @RestController
 class CharacterController(val characterService: CharacterService) {
@@ -33,7 +31,11 @@ class CharacterController(val characterService: CharacterService) {
     }
 
     @GetMapping(path = ["/swapi/characters"])
-    fun getCharactersFromStarWarsApi() : List<CharacterDto> {
-        return characterService.getCharactersFromStarWarsApi()
+    fun getCharactersFromStarWarsApi(@RequestParam(required = false) name: String?) : List<CharacterDto> {
+        return if (name == null) {
+            characterService.getCharactersFromStarWarsApi()
+        } else {
+            characterService.getCharactersFromStarWarsApi(name)
+        }
     }
 }
