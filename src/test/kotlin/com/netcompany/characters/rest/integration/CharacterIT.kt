@@ -7,6 +7,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit4.SpringRunner
@@ -117,4 +118,11 @@ class CharacterIT {
             .andExpect(status().reason(containsString("Could not find character")))
     }
 
+    @Test
+    fun getAllCharactersFromStarWarsApiReturnsCharacters() {
+        mvc.perform(get("/swapi/characters").accept(APPLICATION_JSON))
+            .andExpect(status().isOk)
+            // First page returns 10 characters by default.
+            .andExpect(jsonPath("$.length()", `is`(10)))
+    }
 }

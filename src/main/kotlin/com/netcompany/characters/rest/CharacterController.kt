@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*
  * om dette kan finnes på https://swapi.co.
  *
  * Et nytt endepunkt for å hente karakterer herfra er påbegynt nedenfor. Dette skal ha path /swapi/characters. Fullfør
- * metoden her
+ * metoden her ved å la den kalle tilhørende metode i CharacterService.
+ *
+ * Når du er ferdig kan du kjøre CharacterIT for å se om du har fått det til.
  */
 @RestController
 class CharacterController(val characterService: CharacterService) {
