@@ -68,7 +68,7 @@ class CharacterService(private var characterRepository: CharacterRepository,
      *
      * @return a list of characters
      */
-    fun getAllcharactersFromStarWarsApi(): List<CharacterDto> {
+    fun getAllCharactersFromStarWarsApi(): List<CharacterDto> {
         return starWarsApiService.getAllCharacters()
     }
 

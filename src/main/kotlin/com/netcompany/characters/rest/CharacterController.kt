@@ -33,7 +33,7 @@ class CharacterController(private val characterService: CharacterService) {
         return if (name != null) {
             characterService.getCharacterFromStarWarsApiByName(name)
         } else {
-            characterService.getAllcharactersFromStarWarsApi()
+            characterService.getAllCharactersFromStarWarsApi()
         }
     }
 }
