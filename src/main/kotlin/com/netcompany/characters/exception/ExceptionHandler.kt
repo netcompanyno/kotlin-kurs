@@ -2,7 +2,6 @@ package com.netcompany.characters.exception
 
 import com.fasterxml.jackson.databind.exc.InvalidDefinitionException
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -12,25 +11,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(value = [InvalidDefinitionException::class])
-    fun handleException(exception: InvalidDefinitionException): ResponseEntity<String> {
-        val cause = exception.cause
+    fun handleException(ex: InvalidDefinitionException): ResponseEntity<Map<String, Any?>> {
+        val cause = ex.cause
 
-        // Dette er en liten hack for å få require i init til å fungere.
-        // Det finnes sannsynligvis en bedre måte å løse dette på.
+        /*
+         * Dette er en liten hack for å få require i init til å gi
+         * riktig feilmelding i frontend.
+         * Det finnes sannsynligvis en bedre måte å løse dette på.
+         */
         if (cause is IllegalArgumentException) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(
-                    """
-                {
-                  "code": 500, 
-                  "message": "${cause.message}"
-                }
-            """.trimIndent()
-                )
+            val body = mapOf(
+                "code" to 400,
+                "message" to cause.message
+            )
+            return ResponseEntity(body, HttpStatus.BAD_REQUEST)
         }
 
-        throw exception
+        throw ex
     }
 
 }
