@@ -6,6 +6,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.kittinunf.fuel.httpGet
 import com.netcompany.characters.api.swapi.dto.PeopleResultDto
 import com.netcompany.characters.api.swapi.dto.PlanetDto
+import com.netcompany.characters.exception.SwapiResultException
 import org.springframework.stereotype.Service
 
 @Service
@@ -33,8 +34,8 @@ class StarWarsApiClient {
 
     private fun makeGetRequest(url: String): String {
         val (_, _, result) = url.httpGet().responseString()
-        val (body, _) = result
+        val (body, error) = result
 
-        return body!!
+        return body ?: throw SwapiResultException("$error")
     }
 }
