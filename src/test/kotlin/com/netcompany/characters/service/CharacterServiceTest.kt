@@ -15,6 +15,12 @@ import java.util.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
+
+/**
+ * Oppgave 6
+ *
+ * Når du er ferdig med oppgaven kan du kommentere inn og kjøre disse testene.
+ */
 @RunWith(MockitoJUnitRunner::class)
 class CharacterServiceTest {
     @InjectMocks

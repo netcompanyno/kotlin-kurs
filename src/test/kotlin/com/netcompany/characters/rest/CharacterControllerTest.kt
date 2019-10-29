@@ -13,6 +13,12 @@ import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 import kotlin.test.assertEquals
 
+
+/**
+ * Oppgave 6
+ *
+ * Når du er ferdig med oppgaven kan du kommentere inn og kjøre disse testene.
+ */
 @RunWith(MockitoJUnitRunner::class)
 class CharacterControllerTest {
 
