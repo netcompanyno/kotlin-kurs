@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController
  * Vi ser derimot at initialiseringen av objektet skjer i Controlleren, som egentlig kun skal håndtere ting relatert
  * til selve request og response fra API-et.
  *
- * Derfor ønsker vi å bruke klassen CharacterService i stedet til dette. Flytt initialiseringen dit, og kall denne
- * fra Controlleren.
+ * Derfor ønsker vi å bruke klassen CharacterService i stedet til dette. Flytt initialiseringen til en metode kalt
+ * getCharacters, og kall denne fra Controlleren.
  *
  * Når du er ferdig kan du kjøre testene CharacterControllerTest og CharacterIT for å se om du har fått det til riktig.
  */
