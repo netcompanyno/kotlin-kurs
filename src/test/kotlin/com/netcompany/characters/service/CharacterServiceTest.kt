@@ -1,6 +1,6 @@
 package com.netcompany.characters.service
 
-import com.netcompany.characters.domain.CharacterEntity
+//import com.netcompany.characters.domain.CharacterEntity
 import com.netcompany.characters.repository.CharacterRepository
 import org.junit.Test
 import org.junit.runner.RunWith
