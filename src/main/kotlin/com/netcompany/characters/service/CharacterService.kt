@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service
  *
  * For å hente ut fra databasen trenger man også et Repository. Dette er påbegynt i filen CharacterRepository.
  * Fullfør dette, og kall det i stedet i getCharacters().
+ * (Tips: en metode kalt findAll vil returnere alle forekomstene av en entitet)
  *
  * Repository vil returnere en CharacterEntity, mens Servicen skal returnere en CharacterDto, og det må derfor mappes om.
  * Dette gjøres enklest ved å lage en konstruktør i CharacterDto som tar imot en CharacterEntity.
