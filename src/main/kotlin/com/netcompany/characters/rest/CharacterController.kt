@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController
  * Lag et endepunkt for å opprette karakterer. Dette skal ta imot en karakter, som skal sendes gjennom servicelaget
  * og lagres i databasen. Endepunktet skal retunere den nylig opprettede karakteren.
  *
+ * La metoden hete createCharacter både i Controlleren og i Servicen.
+ *
  * Når du er ferdig skal man kunne opprette en ny karakter fra frontend, og ved å trykke på "Refresh"-knappen skal denne
  * dukke opp i listen. Du kan også kjøre testene for å se om du har løst oppgaven riktig.
  */
