@@ -73,7 +73,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", containsString("Type definition error")))
+            .andExpect(jsonPath("$.message", not(isEmptyOrNullString())))
     }
 
     @Test
@@ -84,7 +84,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", containsString("Type definition error")))
+            .andExpect(jsonPath("$.message", not(isEmptyOrNullString())))
     }
 
     @Test
@@ -95,7 +95,7 @@ class CharacterIT {
 
         mvc.perform(MockMvcRequestBuilders.post("/characters").contentType(APPLICATION_JSON).content(character))
             .andExpect(status().isBadRequest)
-            .andExpect(jsonPath("$", containsString("Type definition error")))
+            .andExpect(jsonPath("$.message", not(isEmptyOrNullString())))
     }
 
     @Test
