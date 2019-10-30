@@ -5,8 +5,8 @@ import com.netcompany.characters.domain.CharacterEntity
 /**
  * Oppgave 7
  *
- * Legg på validering av feltene i denne klassen. For eksempel bør ikke name kunne være tomt, eller høyde være negativ
- * eller 0.
+ * Legg på validering av feltene i denne klassen. For eksempel bør ikke name eller homeworld kunne være tomt, eller
+ * høyde være negativ eller 0.
  *
  * Når du har løst oppgaven kan du prøve å lage en ugyldig karakter fra frontend og skal da kunne se feilmeldingenen.
  * Du kan også kjøre testene i CharacterIT.
