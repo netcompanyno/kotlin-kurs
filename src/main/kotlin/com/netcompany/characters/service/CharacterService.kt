@@ -13,7 +13,6 @@ class CharacterService(val characterRepository: CharacterRepository) {
      */
     fun getCharacters(): List<CharacterDto> {
         return characterRepository.findAll()
-            .map { c -> CharacterDto(c) }
-            .toList()
+            .map { CharacterDto(it) }
     }
 }
