@@ -20,7 +20,7 @@
  *
  * I tilstanden "LoggedIn" kan man motta en "Logout" action. Da går man til "LoggedOut".
  *
- * Alle actions som er ulovlige i tilstanden man er i skal kaste en IllegalArgumentException.
+ * Alle actions som er ulovlige i tilstanden man er i skal kaste en IllegalStateException.
  *
  * Testene i Oppgave6Test vil kjøre grønt når funksjonen er implementert riktig.
  */
