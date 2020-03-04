@@ -5,7 +5,7 @@ import java.lang.Exception
  *
  * I denne oppgaven vil du bli litt mer kjent med hvordan null-safety og smart casting
  * fungerer i Kotlin.
- * Skriv funksjonen handleRemoteCall etter følgende krav, og få testene i Oppgave3Test til å kjøre grønt.
+ * Skriv funksjonen handleRemoteCall etter følgende krav, og få testene i Oppgave2Test til å kjøre grønt.
  *
  * - Dersom id er null, returner en respons med status 404.
  * - Dersom id ikke er null, kall callRemoteAPI
