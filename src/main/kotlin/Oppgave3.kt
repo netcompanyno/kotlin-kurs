@@ -2,7 +2,7 @@
  * Oppgave 3
  *
  * Å nei! Koden nedenfor kompilerer ikke.
- * Gjør det som skal til for at koden kompilerer, ola + kari == sant blir true, og at testene i "Oppgave2Test" kjører grønt.
+ * Gjør det som skal til for at koden kompilerer, ola + kari == sant blir true, og at testene i "Oppgave3Test" kjører grønt.
  */
 
 class Person(???)
