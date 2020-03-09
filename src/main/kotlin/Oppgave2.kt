@@ -14,19 +14,7 @@ import java.lang.Exception
  * - Ellers, returner responsen fra callRemoteAPI.
  */
 
-fun handleRemoteCall(id: Int?): Response  {
-    if (id == null) {
-        return Response(404)
-    }
-
-    val response = callRemoteAPI(id)
-
-    return when (response) {
-        null -> Response(404)
-        Response(500) -> throw Exception()
-        else -> response
-    }
-}
+fun handleRemoteCall(id: Int?): Response = TODO()
 
 
 
