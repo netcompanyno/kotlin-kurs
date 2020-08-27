@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test
 import testdata.*
+import kotlin.math.exp
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
@@ -24,7 +25,7 @@ class Oppgave4Test {
         val orderIds = customer1.getDeliveredOrderIds()
 
         val expected = listOf(1, 5)
-        assertTrue(orderIds.containsAll(expected),
+        assertTrue(orderIds.containsAll(expected) && expected.containsAll(orderIds),
             "Expected: $expected. Actual result: $orderIds")
     }
 
